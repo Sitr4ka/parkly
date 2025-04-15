@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+@layer base {
+    h1 {
+        @apply lg:text-6xl md:text-5xl text-4xl font-bold;
+    }
+
+    h2 {
+        @apply md:text-4xl text-3xl font-bold;
+    }
+}
+
+@layer utilities {
+    .text-primary {
+        @apply text-blue-700;
+    }
+
+    .bg-primary {
+        @apply bg-blue-700;
+    }
+}
+
+@layer components {
+    .navItem {
+        @apply hover:text-blue-700;
+    }
+
+    .button {
+        @apply border border-blue-700 px-6 py-2 rounded-md hover:bg-blue-500 cursor-pointer;
+    }
+}
