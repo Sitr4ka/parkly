@@ -11,9 +11,7 @@
 }
 
 @theme {
-    --color-sitraka: yellow;
     --color-primary: #1447e6;
-    --color-seconday: #FF0000;
 }
 
 @layer utilities {
