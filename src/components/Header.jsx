@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <>
-      <div className="header h-[80px] flex items-center bg-gray-50">
+      <div className="fixed w-full z-20 header h-[80px] flex items-center bg-gray-50">
         <div className="container h-[80px] mx-auto px-8 flex items-center justify-between">
           <h2 className="text-primary">Parkly.</h2>
           <nav className="nav-menu flex gap-8">

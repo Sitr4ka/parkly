@@ -26,7 +26,7 @@
     }
 
     .button {
-        @apply border bg-primary px-6 py-2 rounded-md hover:bg-blue-500 cursor-pointer;
+        @apply border w-[90px]  h-[40px] rounded-md hover:bg-blue-500 cursor-pointer;
     }
 }
 
