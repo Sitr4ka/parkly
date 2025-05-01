@@ -1,0 +1,6 @@
+.form-container {
+    @apply w-[137px] h-[300px];
+    border-radius: 24px;
+    background-color: rgba(217, 209, 209, .5);
+    
+}

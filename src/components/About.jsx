@@ -2,12 +2,12 @@ import parking from './../assets/parking.jpg'
 const About = () => {
     return (
         <>
-            <section class="py-20">
+            <section className="py-20">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col md:flex-row items-center">
                         <div className="md:w-1/2 mb-10 md:mb-0">
                             
-                            <img src={parking}  alt="Modern Parking Facility" class="rounded-lg shadow-lg object-cover w-full h-auto" />
+                            <img src={parking}  alt="Modern Parking Facility" className="rounded-lg shadow-lg object-cover w-full h-auto" />
                         </div>
                         <div className="md:w-1/2 md:pl-12">
                             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Choose Parking Zone</h2>
@@ -19,8 +19,8 @@ const About = () => {
                                         <i className="ri-time-line text-primary"></i>
                                     </div>
                                     <div>
-                                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Save Time</h3>
-                                        <p class="text-gray-600">Our users save an average of 15 minutes per parking session by booking in advance.</p>
+                                        <h3 className="text-xl font-semibold text-gray-900 mb-2">Save Time</h3>
+                                        <p className="text-gray-600">Our users save an average of 15 minutes per parking session by booking in advance.</p>
                                     </div>
                                 </div>
                                 

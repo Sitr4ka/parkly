@@ -1,11 +1,11 @@
-.hero-section {
+.hero-section, .login-section {
   background-image: linear-gradient(
       to right,
       rgba(255, 255, 255, 0.9) 0%,
       rgba(255, 255, 255, 0.8) 30%,
       rgba(255, 255, 255, 0) 70%
     ),
-    url('../assets/underground-parking.jpg');
+    url('../../assets/underground-parking.jpg');
 
     background-size: cover;
     background-position: center;
