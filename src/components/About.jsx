@@ -1,4 +1,6 @@
 import parking from './../assets/parking.jpg';
+import React from 'react';
+
 const About = () => {
   return (
     <>
