@@ -1,9 +1,5 @@
 const ReservationForm = () => {
-    return (
-        <>
-        </>
-    );
-}
+  return <></>;
+};
 
 export default ReservationForm;
-

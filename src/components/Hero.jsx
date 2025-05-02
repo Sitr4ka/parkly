@@ -5,8 +5,7 @@ const Hero = () => {
         <div className="container mx-auto px-6 w-full">
           <div className="w-full md:w-[700px] py-20">
             <h1 className="font-bold text-gray-900 mb-6">
-              Smart <span className="text-primary">Parking</span> Solutions{" "}
-              <br />
+              Smart <span className="text-primary">Parking</span> Solutions <br />
               for <span className="text-primary">Modern</span> Cities
             </h1>
             <p className="text-lg md:text-xl text-gray-700 mb-8">

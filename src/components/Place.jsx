@@ -1,8 +1,5 @@
 const Place = () => {
-    return (
-        <>
-        </>
-    );
-}
+  return <></>;
+};
 
 export default Place;

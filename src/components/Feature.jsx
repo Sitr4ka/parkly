@@ -8,24 +8,20 @@ const Feature = () => {
               Smart Features for Smart Parking
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our innovative platform makes finding and booking parking spaces
-              effortless.
+              Our innovative platform makes finding and booking parking spaces effortless.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
             {/* Feature 1   */}
             <div className="feature-card bg-white p-8 rounded-lg shadow-sm transition-all duration-300">
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
                 <i className="ri-smartphone-line ri-2x text-primary"></i>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Smart Booking
-              </h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Smart Booking</h3>
               <p className="text-gray-600">
-                Book parking spots in advance with just a few taps on your
-                smartphone. Receive instant confirmation and directions.
+                Book parking spots in advance with just a few taps on your smartphone. Receive
+                instant confirmation and directions.
               </p>
             </div>
 
@@ -34,12 +30,10 @@ const Feature = () => {
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
                 <i className="ri-shield-check-line ri-2x text-primary"></i>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                24/7 Security
-              </h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">24/7 Security</h3>
               <p className="text-gray-600">
-                All our parking locations are monitored round-the-clock with
-                CCTV cameras and on-site security personnel.
+                All our parking locations are monitored round-the-clock with CCTV cameras and
+                on-site security personnel.
               </p>
             </div>
 
@@ -48,12 +42,10 @@ const Feature = () => {
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
                 <i className="ri-map-pin-line ri-2x text-primary"></i>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Multiple Locations
-              </h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Multiple Locations</h3>
               <p className="text-gray-600">
-                Access thousands of parking spots across 50+ cities. Find
-                convenient parking wherever your journey takes you.
+                Access thousands of parking spots across 50+ cities. Find convenient parking
+                wherever your journey takes you.
               </p>
             </div>
           </div>

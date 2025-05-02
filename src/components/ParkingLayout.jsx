@@ -1,8 +1,9 @@
 const ParkingLayout = () => {
-    return (
-        <>
-        </>
-    );
-}
+  return (
+    <>
+      <div></div>
+    </>
+  );
+};
 
 export default ParkingLayout;
