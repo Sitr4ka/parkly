@@ -6,7 +6,7 @@ export const parkings = [
     address: '123 rue Exemple, Ville',
     rating: 4.3,
     availableSpots: 12,
-    pricePerHour: 2,
+    pricePerHour: 500,
     isNew: true,
   },
   {
@@ -16,7 +16,7 @@ export const parkings = [
     address: 'Place de la Gare, Ville',
     rating: 3.8,
     availableSpots: 5,
-    pricePerHour: 1.5,
+    pricePerHour: 400,
     isNew: false,
   },
   {
@@ -26,7 +26,7 @@ export const parkings = [
     address: 'Avenue de l’Aéroport, Ville',
     rating: 4.9,
     availableSpots: 20,
-    pricePerHour: 3,
+    pricePerHour: 700,
     isNew: true,
   },
 ];
