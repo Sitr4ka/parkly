@@ -9,18 +9,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-<<<<<<< HEAD
-          <Route path="/home" element={<Home />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/parking" element={<SideBar />}/>
-          <Route path="/reservation" element={<Reservation />}/>
-=======
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sidebar" element={<SideBar />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/test" element={<TestParking />} />
->>>>>>> add-parkingLayoutComponent
         </Routes>
       </BrowserRouter>
     </>
