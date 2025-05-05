@@ -4,6 +4,7 @@ import Login from './pages/login/Login';
 import SideBar from './components/SideBar';
 import Reservation from './pages/reservation/Reservation';
 import TestParking from './components/TestParking';
+import MyReservation from "./pages/MyReservation/MyReservation"
 function App() {
   return (
     <>
@@ -13,7 +14,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/sidebar" element={<SideBar />} />
           <Route path="/reservation" element={<Reservation />} />
-          <Route path="/test" element={<TestParking />} />
+          <Route path="/test" element={<TestParking />} />      
+          <Route path="/MyReservation" element={<MyReservation />}/>
         </Routes>
       </BrowserRouter>
     </>
