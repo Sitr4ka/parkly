@@ -1,5 +1,7 @@
 import ParkingLayout from "../../components/ParkingLayout";
 import ReservationForm from "../../components/ReservationForm";
+import Sidebar from "../../components/SideBar";
+import Navbar from "../../components/Navbar";
 
 const Reservation = () => {
   return (
