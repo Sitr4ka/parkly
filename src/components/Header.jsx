@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Header = () => {
   return (
     <>
@@ -20,7 +22,7 @@ const Header = () => {
           </nav>
           <div className="callToAction flex gap-4 max-md:hidden">
             <button className="button text-primary hover:text-white">Log In</button>
-            <button className="button text-white bg-primary hover:bg-blue-500">Contact</button>
+            <button className="button text-white bg-primary hover:bg-blue-500">Sign Up</button>
           </div>
         </div>
       </div>
