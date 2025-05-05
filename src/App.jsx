@@ -15,7 +15,7 @@ function App() {
           <Route path="/sidebar" element={<SideBar />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/test" element={<TestParking />} />      
-          <Route path="/MyReservation" element={<MyReservation />}/>
+          <Route path="/myReservation" element={<MyReservation />}/>
         </Routes>
       </BrowserRouter>
     </>
