@@ -12,6 +12,14 @@ const SideBar = ({ isActive = false }) => {
             className={({ isActive }) =>
               isActive ? 'text-blue-700 bg-blue-300 rounded px-4 py-2' : 'rounded px-4 py-2'
             }
+            to="/booking"
+          >
+            Booking
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? 'text-blue-700 bg-blue-300 rounded px-4 py-2' : 'rounded px-4 py-2'
+            }
             to="/reservation"
           >
             Nouveau

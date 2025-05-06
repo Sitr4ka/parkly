@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
-import SideBar from './components/SideBar';
 import Reservation from './pages/reservation/Reservation';
 import TestParking from './components/TestParking';
-import MyReservation from "./pages/MyReservation/MyReservation"
+import MyReservation from './pages/MyReservation/MyReservation';
+import Booking from './pages/booking/Booking';
 function App() {
   return (
     <>
@@ -12,10 +12,10 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/sidebar" element={<SideBar />} />
+          <Route path="/booking" element={<Booking />} />
           <Route path="/reservation" element={<Reservation />} />
-          <Route path="/test" element={<TestParking />} />      
-          <Route path="/myReservation" element={<MyReservation />}/>
+          <Route path="/test" element={<TestParking />} />
+          <Route path="/myReservation" element={<MyReservation />} />
         </Routes>
       </BrowserRouter>
     </>

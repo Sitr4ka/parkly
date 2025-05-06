@@ -28,6 +28,10 @@
   .button {
     @apply border w-[90px]  h-[40px] rounded-md hover:bg-blue-500 cursor-pointer;
   }
+
+  .card-container {
+    @apply w-[360px] shadow-xl rounded-2xl bg-[#FAFAFA]
+  }
 }
 
 .button {
