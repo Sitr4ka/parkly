@@ -1,19 +1,16 @@
-const reservations = [
-  { parking: 'Parking Gare', date: '10/04/2025', status: '', debut: '', fin: '', prix: '' },
-  { parking: 'Parking Centre-ville', date: '07/04/2025', status: '', debut: '', fin: '', prix: '' },
-  { parking: 'Parking Centre-ville', date: '07/04/2025', status: '', debut: '', fin: '', prix: '' },
-];
-const res= [
-  {id:"#RES-2504", spot:'A1',chek_in:"Apr 2, 2025 08:30 AM",check_out:"Apr 2, 2025 08:30 AM"},
-  {id:"#RES-2504", spot:'A1',chek_in:"Apr 2, 2025 08:30 AM",check_out:"Apr 2, 2025 08:30 AM"},
-  {id:"#RES-2504", spot:'A1',chek_in:"Apr 2, 2025 08:30 AM",check_out:"Apr 2, 2025 08:30 AM"},
-  {id:"#RES-2504", spot:'A1',chek_in:"Apr 2, 2025 08:30 AM",check_out:"Apr 2, 2025 08:30 AM"},
-  {id:"#RES-2504", spot:'A1',chek_in:"Apr 2, 2025 08:30 AM",check_out:"Apr 2, 2025 08:30 AM"},
-  {id:"#RES-2504", spot:'A1',chek_in:"Apr 2, 2025 08:30 AM",check_out:"Apr 2, 2025 08:30 AM"},
+// const reservations = [
+//   { parking: 'Parking Gare', date: '10/04/2025', status: '', debut: '', fin: '', prix: '' },
+//   { parking: 'Parking Centre-ville', date: '07/04/2025', status: '', debut: '', fin: '', prix: '' },
+//   { parking: 'Parking Centre-ville', date: '07/04/2025', status: '', debut: '', fin: '', prix: '' },
+// ];
 
-]
 import ReservationCard from './ReservationCard';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteReservation } from '../../../data/reservationSlice';
+import { FaTimes } from 'react-icons/fa';
 const ReservationList = () => {
+  const reservations = useSelector(state => state.reservations);
+  const dispatch = useDispatch();
   return (
     <>
       {/* <h1 class="text-xl font-semibold mb-6">Liste de toutes vos réservations</h1>
@@ -22,29 +19,29 @@ const ReservationList = () => {
       ))} */}
 
       <div className=''>
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-                  <h2 class="text-lg font-semibold text-gray-800">Recent Reservations</h2>
-                  <div class="flex flex-wrap items-center gap-2">
-                      <div class="relative">
-                          <button class="border border-gray-200 rounded-button px-3 py-1.5 text-sm text-gray-600 flex items-center whitespace-nowrap">
-                              <div class="w-4 h-4 flex items-center justify-center mr-1.5">
-                                  <i class="ri-filter-3-line"></i>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                  <h2 className="text-lg font-semibold text-gray-800">Recent Reservations</h2>
+                  <div className="flex flex-wrap items-center gap-2">
+                      <div className="relative">
+                          <button className="border border-gray-200 rounded-button px-3 py-1.5 text-sm text-gray-600 flex items-center whitespace-nowrap">
+                              <div className="w-4 h-4 flex items-center justify-center mr-1.5">
+                                  <i className="ri-filter-3-line"></i>
                               </div>
                               Filter
                           </button>
                       </div>
-                      <div class="relative">
-                          <button class="border border-gray-200 rounded-button px-3 py-1.5 text-sm text-gray-600 flex items-center whitespace-nowrap">
-                              <div class="w-4 h-4 flex items-center justify-center mr-1.5">
-                                  <i class="ri-download-line"></i>
+                      <div className="relative">
+                          <button className="border border-gray-200 rounded-button px-3 py-1.5 text-sm text-gray-600 flex items-center whitespace-nowrap">
+                              <div className="w-4 h-4 flex items-center justify-center mr-1.5">
+                                  <i className="ri-download-line"></i>
                               </div>
                               Export
                           </button>
                       </div>
-                      <div class="relative">
-                          <button class="border border-gray-200 rounded-button px-3 py-1.5 text-sm text-gray-600 flex items-center whitespace-nowrap">
-                              <div class="w-4 h-4 flex items-center justify-center mr-1.5">
-                                  <i class="ri-printer-line"></i>
+                      <div className="relative">
+                          <button className="border border-gray-200 rounded-button px-3 py-1.5 text-sm text-gray-600 flex items-center whitespace-nowrap">
+                              <div className="w-4 h-4 flex items-center justify-center mr-1.5">
+                                  <i className="ri-printer-line"></i>
                               </div>
                               Print
                           </button>
@@ -61,31 +58,27 @@ const ReservationList = () => {
                             <th className="px-4 py-3 font-medium">Check-in</th>
                             <th className="px-4 py-3 font-medium">Check-out</th>
                             <th className="px-4 py-3 font-medium">Status</th>
-                            <th className="px-4 py-3 font-medium">Actions</th>
+                            <th className="px-4 py-3 font-medium">Annuler</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {res.map((r=>(
+                        {reservations.map((r=>(
                           <tr  key={r.id} class="bg-white border-b hover:bg-gray-50">
-                          <td class="px-4 py-3 font-medium text-gray-900">{r.id}</td>
+                          <td className="px-4 py-3 font-medium text-gray-900">{r.id}</td>
 
-                          <td class="px-4 py-3">{r.spot}</td>
-                          <td class="px-4 py-3">{r.chek_in}</td>
-                          <td class="px-4 py-3">{r.check_out}</td>
-                          <td class="px-4 py-3">
-                              <span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Reserved</span>
+                          <td className="px-4 py-3">{r.spot}</td>
+                          <td className="px-4 py-3">{r.chek_in}</td>
+                          <td className="px-4 py-3">{r.check_out}</td>
+                          <td className="px-4 py-3">
+                              <span className="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">{r.status}</span>
                           </td>
-                          <td class="px-4 py-3">
-                              <div class="flex items-center space-x-2">
-                                  <button class="text-gray-500 hover:text-primary">
-                                      <div class="w-8 h-8 flex items-center justify-center">
-                                          <i class="ri-edit-line"></i>
-                                      </div>
-                                  </button>
-                                  <button class="text-gray-500 hover:text-red-500">
-                                      <div class="w-8 h-8 flex items-center justify-center">
-                                          <i class="ri-delete-bin-line"></i>
-                                      </div>
+                          <td className="px-4 py-3">
+                              <div className="flex items-center space-x-2">
+                              
+                                  <button  className="text-gray-500 hover:text-red-500"
+                                    onClick={() => dispatch(deleteReservation(r.id))}
+                                  >
+                                     <FaTimes size={24} color="red" />
                                   </button>
                               </div>
                           </td>
