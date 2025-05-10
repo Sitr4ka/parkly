@@ -31,26 +31,24 @@ export default function SignUp() {
     if (!validate()) return;
 
     try {
-      const data = await register(form);
-      // localStorage.setItem('token', data.token);
-      console.log('Registration successful:', data);
-      console.log(import.meta.env.VITE_API_URL);
-      navigate('/signin'); // Redirection après inscription
+      await register(form);
+      navigate('/signin');
     } catch (err) {
       setApiError(err.message);
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center p-4 bg-gray-50 dark:bg-gray-900">
-      <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md space-y-6">
-        <div className="text-center">
-          <img src={logo} alt="Logo" className="h-28 w-60 object-contain mx-auto" />
-          <h1 className="text-3xl font-semibold text-gray-900 dark:text-gray-100">Sign up</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 sm:px-6">
+      <div className="w-full max-w-md sm:max-w-lg bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-md space-y-6">
+        <div className="text-center space-y-2">
+          <img src={logo} alt="Logo" className="h-20 w-auto sm:h-24 mx-auto object-contain" />
+          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+            Create your account
+          </h1>
         </div>
 
         <form onSubmit={handleSubmit} noValidate className="space-y-4">
-          {/* Full Name */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Full Name
@@ -61,7 +59,7 @@ export default function SignUp() {
               type="text"
               value={form.name}
               onChange={handleChange}
-              className={`mt-1 p-2 pl-4 w-full rounded-md shadow-sm border ${
+              className={`mt-1 p-2 pl-4 w-full rounded-md border ${
                 errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
               } dark:bg-gray-700 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500 outline-none`}
               placeholder="John Doe"
@@ -69,7 +67,6 @@ export default function SignUp() {
             {errors.name && <p className="text-sm text-red-600 mt-1">{errors.name}</p>}
           </div>
 
-          {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Email
@@ -81,7 +78,7 @@ export default function SignUp() {
               value={form.email}
               onChange={handleChange}
               autoComplete="email"
-              className={`mt-1 p-2 pl-4 w-full rounded-md shadow-sm border ${
+              className={`mt-1 p-2 pl-4 w-full rounded-md border ${
                 errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
               } dark:bg-gray-700 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500 outline-none`}
               placeholder="you@example.com"
@@ -89,7 +86,6 @@ export default function SignUp() {
             {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
           </div>
 
-          {/* Password */}
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Password
@@ -102,7 +98,7 @@ export default function SignUp() {
                 value={form.password}
                 onChange={handleChange}
                 autoComplete="new-password"
-                className={`mt-1 p-2 pl-4 pr-10 w-full rounded-md shadow-sm border ${
+                className={`mt-1 p-2 pl-4 pr-10 w-full rounded-md border ${
                   errors.password ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                 } dark:bg-gray-700 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500 outline-none`}
                 placeholder="••••••"
@@ -118,12 +114,11 @@ export default function SignUp() {
             {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password}</p>}
           </div>
 
-          {/* API error */}
           {apiError && <p className="text-sm text-red-600 text-center">{apiError}</p>}
 
           <button
             type="submit"
-            className="w-full py-2 px-4 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 focus:outline-none"
+            className="w-full py-2 px-4 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors duration-200"
           >
             Sign up
           </button>

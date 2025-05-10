@@ -28,28 +28,24 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
-
     try {
       const data = await login(form);
-      // store token and navigate
       localStorage.setItem('token', data.token);
       navigate('/reservation');
     } catch (err) {
-      const msg = err.response?.data?.error || 'Login failed';
-      setApiError(msg);
+      setApiError(err.message);
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col justify-center p-4 bg-gray-50 dark:bg-gray-900">
-      <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md space-y-6">
+      <div className="w-full max-w-[90%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md space-y-6">
         <div className="text-center">
-          <img src={logo} alt="Logo" className="h-28 w-60 object-contain mx-auto" />
-          <h1 className="text-3xl font-semibold text-gray-900 dark:text-gray-100">Sign in</h1>
+          <img src={logo} alt="Logo" className="h-24 sm:h-28 w-auto object-contain mx-auto" />
+          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100">Sign in</h1>
         </div>
 
         <form onSubmit={handleSubmit} noValidate className="space-y-4">
-          {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Email
@@ -69,7 +65,6 @@ export default function SignIn() {
             {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
           </div>
 
-          {/* Password */}
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Password
@@ -99,7 +94,6 @@ export default function SignIn() {
             {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password}</p>}
           </div>
 
-          {/* API error */}
           {apiError && <p className="text-sm text-red-600 text-center">{apiError}</p>}
 
           <button
@@ -111,7 +105,7 @@ export default function SignIn() {
         </form>
 
         <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-          Don't have an account?{' '}
+          Don’t have an account?{' '}
           <a href="/signup" className="text-blue-600 hover:underline">
             Sign up
           </a>

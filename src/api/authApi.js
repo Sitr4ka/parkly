@@ -6,7 +6,6 @@ export const register = async ({ name, email, password }) => {
     const response = await client.post('/auth/register', { name, email, password });
     return response.data;
   } catch (err) {
-    // On renvoie l'erreur du backend si elle existe
     const message = err.response?.data?.error || "Something went wrong";
     throw new Error(message);
   }
@@ -14,11 +13,17 @@ export const register = async ({ name, email, password }) => {
 
 
 export async function login({ email, password }) {
-  const response = await client.post('/auth/login', {
-    email,
-    password,
-  });
-  return response.data;
+
+  try {
+    const response = await client.post('/auth/login', {
+      email,
+      password,
+    });
+    return response.data;
+  } catch (err) {
+    const message = err.response?.data?.error || "Something went wrong";
+    throw new Error(message);
+  }
 }
 
 
