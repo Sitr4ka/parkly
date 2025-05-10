@@ -8,7 +8,7 @@ const generateBookings = (spotIndex) => {
     // Pour simplifier, toutes les réservations sont pour la date du jour
     const date = new Date().toLocaleDateString('fr-CA'); // ou 'en-CA' pour format ISO YYYY-MM-DD
 
-     // '2025-05-04'
+    // '2025-05-04'
 
     // Heure de début entre 8h00 et 17h00
     const startHour = 8 + Math.floor(Math.random() * 10); // 8h → 17h

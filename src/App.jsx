@@ -5,6 +5,8 @@ import Reservation from './pages/reservation/Reservation';
 import TestParking from './components/TestParking';
 import MyReservation from './pages/MyReservation/MyReservation';
 import Booking from './pages/booking/Booking';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 function App() {
   return (
     <>
@@ -16,6 +18,8 @@ function App() {
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/test" element={<TestParking />} />
           <Route path="/myReservation" element={<MyReservation />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </>

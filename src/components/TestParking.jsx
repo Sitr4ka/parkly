@@ -6,9 +6,7 @@ const fakeSpots = [
   {
     id: 'A1',
     status: 'free',
-    bookings: [
-      { date: '2025-05-05', from: '08:00', to: '09:00' },
-    ],
+    bookings: [{ date: '2025-05-05', from: '08:00', to: '09:00' }],
   },
   {
     id: 'A2',

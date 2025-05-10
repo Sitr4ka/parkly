@@ -1,17 +1,7 @@
 // Controls.jsx
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-/**
- * Controls component for filtering parking spots by date and time interval.
- * Props:
- * - date: selected date string (YYYY-MM-DD)
- * - onDateChange: function to update date
- * - from: start time string (HH:MM)
- * - onFromChange: function to update start time
- * - to: end time string (HH:MM)
- * - onToChange: function to update end time
- */
 export default function Controls({ date, onDateChange, from, onFromChange, to, onToChange }) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
@@ -29,7 +19,6 @@ export default function Controls({ date, onDateChange, from, onFromChange, to, o
         />
       </div>
 
-      {/* Start time input */}
       <div className="flex flex-col">
         <label htmlFor="filter-from" className="text-sm font-medium text-gray-700 mb-1">
           From
@@ -43,7 +32,6 @@ export default function Controls({ date, onDateChange, from, onFromChange, to, o
         />
       </div>
 
-      {/* End time input */}
       <div className="flex flex-col">
         <label htmlFor="filter-to" className="text-sm font-medium text-gray-700 mb-1">
           To

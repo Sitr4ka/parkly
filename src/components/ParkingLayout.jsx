@@ -24,7 +24,7 @@ function filterSpotsByInterval(spots, date, from, to) {
   const fromMin = timeToMinutes(from);
   const toMin = timeToMinutes(to);
 
-  return spots.map(spot => {
+  return spots.map((spot) => {
     if (!Array.isArray(spot.bookings)) {
       // Pas de bookings : considéré comme libre
       return { ...spot, status: 'free' };
@@ -66,8 +66,8 @@ export default function ParkingLayout({ spots: initialSpots, onSelect }) {
     setPage(0);
   }, [initialSpots, date, fromTime, toTime]);
 
-  const handleToggle = id => {
-    setSelected(prev => {
+  const handleToggle = (id) => {
+    setSelected((prev) => {
       const newSelected = new Set(prev);
       if (newSelected.has(id)) {
         newSelected.delete(id);
@@ -103,7 +103,7 @@ export default function ParkingLayout({ spots: initialSpots, onSelect }) {
 
         <div className="flex-1 flex flex-col pt-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3 flex-1 overflow-auto">
-            {pageSpots.map(spot => (
+            {pageSpots.map((spot) => (
               <Spot
                 key={spot.id}
                 id={spot.id}
@@ -116,15 +116,17 @@ export default function ParkingLayout({ spots: initialSpots, onSelect }) {
 
           <div className="flex justify-between items-center mt-4">
             <button
-              onClick={() => setPage(p => Math.max(p - 1, 0))}
+              onClick={() => setPage((p) => Math.max(p - 1, 0))}
               disabled={page === 0}
               className="px-4 py-2 border rounded disabled:opacity-50 cursor-pointer"
             >
               Previous
             </button>
-            <span className="text-sm">Page {page + 1} of {totalPages}</span>
+            <span className="text-sm">
+              Page {page + 1} of {totalPages}
+            </span>
             <button
-              onClick={() => setPage(p => Math.min(p + 1, totalPages - 1))}
+              onClick={() => setPage((p) => Math.min(p + 1, totalPages - 1))}
               disabled={page === totalPages - 1}
               className="px-4 py-2 border rounded disabled:opacity-50 cursor-pointer"
             >
