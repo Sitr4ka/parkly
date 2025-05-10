@@ -30,7 +30,7 @@
   }
 
   .card-container {
-    @apply w-[360px] shadow-xl rounded-2xl bg-[#FAFAFA]
+    @apply w-[360px] shadow-xl rounded-2xl bg-[#FAFAFA];
   }
 }
 

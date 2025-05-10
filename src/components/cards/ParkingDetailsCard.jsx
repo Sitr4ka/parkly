@@ -24,7 +24,9 @@ const ParkingDetailsCard = () => {
           <div className="font-light">24/7</div>
         </div>
       </div>
-      <button className='bg-primary py-2 text-amber-200 rounded-md' type="button">Réserver</button>
+      <button className="bg-primary py-2 text-amber-200 rounded-md" type="button">
+        Réserver
+      </button>
     </div>
   );
 };

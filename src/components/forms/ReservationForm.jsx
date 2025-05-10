@@ -1,5 +1,5 @@
-import "./reseravationForm.css";
-import CustomInput from "../CustomInput";
+import './reseravationForm.css';
+import CustomInput from '../CustomInput';
 
 const ReservationForm = () => {
   return (
