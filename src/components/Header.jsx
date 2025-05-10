@@ -1,16 +1,12 @@
 import React from 'react';
-import logo from './../assets/logo2.png'
+import logo from './../assets/logo2.png';
 
 const Header = () => {
   return (
     <>
       <div className="fixed w-full z-20 header h-[80px] flex items-center bg-gray-50">
         <div className="container h-[80px] mx-auto px-8 flex items-center justify-between">
-          <img
-                src={logo}
-                alt="Logo"
-                className="h-20 w-60 object-contain"
-          />
+          <img src={logo} alt="Logo" className="h-20 w-60 object-contain" />
           <nav className="nav-menu flex gap-8">
             <a href="#" className="navItem text-primary">
               Home

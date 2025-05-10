@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { login } from '../api/authApi';
-import logo from './../assets/logo1.png';
+import logo from './../assets/logo2.png';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
@@ -41,13 +41,18 @@ export default function SignIn() {
     <div className="min-h-screen flex flex-col justify-center p-4 bg-gray-50 dark:bg-gray-900">
       <div className="w-full max-w-[90%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md space-y-6">
         <div className="text-center">
-          <img src={logo} alt="Logo" className="h-24 sm:h-28 w-auto object-contain mx-auto" />
-          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100">Sign in</h1>
+          <img src={logo} alt="Logo" className="h-16 sm:h-20 w-auto object-contain mx-auto" />
+          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+            Sign in
+          </h1>
         </div>
 
         <form onSubmit={handleSubmit} noValidate className="space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Email
             </label>
             <input
@@ -66,7 +71,10 @@ export default function SignIn() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Password
             </label>
             <div className="relative">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { register } from '../api/authApi';
-import logo from './../assets/logo1.png';
+import logo from './../assets/logo2.png';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
@@ -42,7 +42,7 @@ export default function SignUp() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 sm:px-6">
       <div className="w-full max-w-md sm:max-w-lg bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-md space-y-6">
         <div className="text-center space-y-2">
-          <img src={logo} alt="Logo" className="h-20 w-auto sm:h-24 mx-auto object-contain" />
+          <img src={logo} alt="Logo" className="h-16 w-auto sm:h-20 mx-auto object-contain" />
           <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100">
             Create your account
           </h1>
@@ -50,7 +50,10 @@ export default function SignUp() {
 
         <form onSubmit={handleSubmit} noValidate className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Full Name
             </label>
             <input
@@ -68,7 +71,10 @@ export default function SignUp() {
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Email
             </label>
             <input
@@ -87,7 +93,10 @@ export default function SignUp() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Password
             </label>
             <div className="relative">
