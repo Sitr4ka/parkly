@@ -8,7 +8,9 @@ const ReservationList = () => {
   const handleDelete=(id)=>{
     dispatch(deleteReservation(id))
   }
-  const [search,setSearch]=useState('#RES-1001')
+  const [search,setSearch]=useState('')
+  
+  // Search
   const filterRes=(reservations==[])?[]:reservations.filter(
     r=>r.id.toLowerCase().includes(search.toLocaleLowerCase())||
     r.spot.toLowerCase().includes(search.toLocaleLowerCase())||
@@ -27,7 +29,7 @@ const ReservationList = () => {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Trouver un parking"
+          placeholder=" Search for a  reservation"
           className="border border-gray-300 p-2 rounded w-full"
         />
         <button className="bg-blue-600 text-white px-4 py-2 rounded">Rechercher</button>
@@ -75,6 +77,7 @@ const ReservationList = () => {
           </table>
         </div>
       </div>
+
     </>
   );
 };
