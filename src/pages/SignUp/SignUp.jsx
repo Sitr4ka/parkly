@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { register } from '../api/authApi';
+import { register } from '../../api/authApi';
 import logo from './../assets/logo2.png';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +54,7 @@ export default function SignUp() {
               htmlFor="name"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
-              Full Name
+              Name
             </label>
             <input
               id="name"

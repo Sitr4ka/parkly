@@ -32,54 +32,7 @@ const ReservationList = () => {
         />
         <button className="bg-blue-600 text-white px-4 py-2 rounded">Rechercher</button>
       </header>
-        <div className="overflow-x-auto custom-scrollbar">
-                <table  className='w-full min-w-[800px] text-sm text-left'>
-                    <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
-                      <tr>
-                            <th className="px-4 py-3 font-medium">Booking ID</th>
-                      
-                            <th className="px-4 py-3 font-medium">Spot</th>
-                            <th className="px-4 py-3 font-medium">Check-in</th>
-                            <th className="px-4 py-3 font-medium">Check-out</th>
-                            <th className="px-4 py-3 font-medium">Status</th>
-                            <th className="px-4 py-3 font-medium">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filterRes.map((r=>(
-                          <tr  key={r.id} class="bg-white border-b hover:bg-gray-50">
-                          <td className="px-4 py-3 font-medium text-gray-900">{r.id}</td>
-
-                          <td className="px-4 py-3">{r.spot}</td>
-                          <td className="px-4 py-3">{r.startTime}</td>
-                          <td className="px-4 py-3">{r.endTime}</td>
-                          <td className="px-4 py-3">
-                              <span className="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">{r.status}</span>
-                          </td>
-                          <td className="px-4 py-3">
-                            
-                            <div className='flex items-center space-x-2'>
-                                <button className="bg-blue-500 text-white px-3 py-1 rounded">
-                              
-                                    Pay
-                                </button>
-                                <button className="bg-gray-500 text-white px-3 py-1 rounded"
-                                  onClick={()=>handleDelete(r.id)}
-                                  >
-                                    Cancel
-                                  </button>
-                        </div>
-                          </td>
-                        <td>
-                  
-                        </td>
-                      </tr>
-                        )))}
-                    </tbody>
-                </table>
-            </div>
-          </div>
-        </div>
+  
         <div className="overflow-x-auto custom-scrollbar">
           <table className="w-full min-w-[800px] text-sm text-left">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50">

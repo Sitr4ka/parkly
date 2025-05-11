@@ -5,8 +5,8 @@ import Reservation from './pages/reservation/Reservation';
 import TestParking from './components/TestParking';
 import MyReservation from './pages/MyReservation/MyReservation';
 import Booking from './pages/booking/Booking';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
+import SignIn from './pages/SignIn/SignIn';
+import SignUp from './pages/SignUp/SignUp';
 function App() {
   return (
     <>

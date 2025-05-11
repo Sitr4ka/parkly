@@ -2,14 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * Spot component representing a parking spot.
- * Props:
- * - id: unique identifier
- * - status: "free" | "occupied"
- * - selected: boolean
- * - onToggle: function called when spot is clicked
- */
 export default function Spot({ id, status, selected, onToggle }) {
   const isDisabled = status === 'occupied';
 
