@@ -1,1 +1,40 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@layer base {
+  h1 {
+    @apply lg:text-6xl md:text-5xl text-4xl font-bold;
+  }
+
+  h2 {
+    @apply md:text-4xl text-3xl font-bold;
+  }
+}
+
+@theme {
+  --color-primary: #1447e6;
+}
+
+@layer utilities {
+  .bg-primary {
+    @apply bg-primary;
+  }
+}
+
+@layer components {
+  .navItem {
+    @apply hover:text-blue-700;
+  }
+
+  .button {
+    @apply border w-[90px]  h-[40px] rounded-md hover:bg-blue-500 cursor-pointer;
+  }
+
+  .card-container {
+    @apply w-[360px] shadow-xl rounded-2xl bg-[#FAFAFA];
+  }
+}
+
+.button {
+  border: solid blue 1px;
+  padding: 2px 6px;
+}

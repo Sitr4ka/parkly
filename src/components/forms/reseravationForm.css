@@ -1,0 +1,5 @@
+.form-container {
+  @apply min-w-[320px];
+  min-width: 320px;
+  background-color: #d9d9d9;
+}
