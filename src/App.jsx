@@ -5,6 +5,7 @@ import Reservation from './pages/reservation/Reservation';
 import TestParking from './components/TestParking';
 import MyReservation from './pages/MyReservation/MyReservation';
 import Booking from './pages/booking/Booking';
+import StepFormTest from './pages/StepFormTest';
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/test" element={<TestParking />} />
           <Route path="/myReservation" element={<MyReservation />} />
+          <Route path='/profile' element={<StepFormTest />} />
         </Routes>
       </BrowserRouter>
     </>
