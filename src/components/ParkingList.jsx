@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ParkingDetailsCard from './cards/ParkingDetailsCard';
+import { parkings } from '../../data/parkings';
 
 const ParkingList = () => {
   const [search, setSearch] = useState('');
@@ -17,11 +18,16 @@ const ParkingList = () => {
         <button className="bg-blue-600 text-white px-4 py-2 rounded">Rechercher</button>
       </header>
       <section id="products" className="flex flex-wrap justify-center gap-6 bg-gray-100">
-        <ParkingDetailsCard />
-        <ParkingDetailsCard />
-        <ParkingDetailsCard />
-        <ParkingDetailsCard />
-        <ParkingDetailsCard />
+        <ul
+          className="flex gap-8"
+        >
+          {parkings &&
+            parkings.map((parking) => (
+              <li key={parking.id}>
+                <ParkingDetailsCard />
+              </li>
+            ))}
+        </ul>
       </section>
     </>
   );
