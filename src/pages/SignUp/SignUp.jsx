@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { register } from '../../api/authApi';
-import logo from './../assets/logo2.png';
+import logo from '../../assets/logo2.png';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
