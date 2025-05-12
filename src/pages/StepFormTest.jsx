@@ -15,7 +15,7 @@ const StepFormTest = () => {
             <Navbar />
           </header>
           <main className="flex-1 p-3 bg-gray-100 overflow-y-auto">
-            <div className="bg-gray-900 flex flex-col gap-10 h-screen items-center justify-center">
+            <div className="flex flex-col gap-10 h-screen items-center justify-center">
               <NewBooking />
             </div>
           </main>

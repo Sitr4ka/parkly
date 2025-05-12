@@ -29,10 +29,14 @@
 }
 
 .complete p {
-    @apply text-white;
+    @apply text-blue-500 font-bold;
 }
 
 .complete:not(:first-child):before,
 .active:not(:first-child):before {
     @apply bg-green-600 ;
   }
+
+.formInput {
+  @apply border py-2 rounded-md w-full;
+}
