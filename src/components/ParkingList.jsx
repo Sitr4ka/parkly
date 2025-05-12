@@ -17,14 +17,15 @@ const ParkingList = () => {
         />
         <button className="bg-blue-600 text-white px-4 py-2 rounded">Rechercher</button>
       </header>
+
       <section id="products" className="flex flex-wrap justify-center gap-6 bg-gray-100">
         <ul
-          className="flex gap-8"
+          className="flex gap-8 flex-wrap overflow-x-hidden"
         >
           {parkings &&
             parkings.map((parking) => (
               <li key={parking.id}>
-                <ParkingDetailsCard />
+                <ParkingDetailsCard ParkingInfo={parking}/>
               </li>
             ))}
         </ul>
