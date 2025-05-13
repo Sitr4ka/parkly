@@ -7,6 +7,7 @@ import MyReservation from './pages/MyReservation/MyReservation';
 import Booking from './pages/booking/Booking';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import NewBooking from './pages/reservation/NewBooking';
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/myReservation" element={<MyReservation />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+            <Route path="/test" element={<NewBooking />} />
         </Routes>
       </BrowserRouter>
     </>
