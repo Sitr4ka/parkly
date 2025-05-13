@@ -81,7 +81,7 @@ function ParkingDetailsCard({ ParkingInfo }) {
         </button>
         {/* Reservation Modal */}
         {showModal && selectedParking && (
-          <div className="fixed inset-x-40 flex justify-center items-center z-50">
+          <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-50">
             <div className="bg-white p-6 rounded-xl w-full max-w-lg">
               <h3 className="text-xl font-bold mb-4">Réserver - {selectedParking.name}</h3>
               <form className="space-y-4" onSubmit={handleSubmit}>
