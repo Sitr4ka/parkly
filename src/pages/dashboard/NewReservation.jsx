@@ -2,9 +2,9 @@ import React from 'react';
 
 const NewReservation = () => {
     return (
-        <div>
-            New Reservation
-        </div>
+        <>
+            
+        </>
     );
 };
 
