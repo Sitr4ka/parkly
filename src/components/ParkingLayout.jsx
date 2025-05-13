@@ -94,8 +94,12 @@ export default function ParkingLayout({ spots: initialSpots, onSelect }) {
 
   const start = page * SPOTS_PER_PAGE;
   const pageSpots = filteredSpots.slice(start, start + SPOTS_PER_PAGE);
+// useEffect(()=>{
+      
+//     },)
 
   return (
+    
     <section className="flex-1 p-4 sm:p-6 bg-gray-100 overflow-hidden">
       <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-6 flex flex-col h-full">
         <Controls

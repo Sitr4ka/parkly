@@ -4,13 +4,7 @@ const initialState={
     starTime:'',
     endTime:'',
     spot:[
-        {
-            id:'11',
-
-        },
-        {
-            id:'40'
-        }
+      
     ],
 }
 

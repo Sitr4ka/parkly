@@ -9,6 +9,7 @@ import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import NewBooking from './components/forms/NewBooking';
 import StepFormTest from './pages/StepFormTest';
+import ReservationPage from './components/TestReservatio';
 function App() {
   return (
     <>
@@ -22,7 +23,7 @@ function App() {
           <Route path="/myReservation" element={<MyReservation />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/profile" element={<StepFormTest />} />
+          <Route path="/profile" element={<ReservationPage />} />
         </Routes>
       </BrowserRouter>
     </>
