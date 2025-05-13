@@ -1,12 +1,8 @@
-import React from 'react';
-import { parkings } from '../../../data/parkings';
+import React from "react";
 
 const MyReservationPage = () => {
-    return (
-        <div>
-            My Reservation
-        </div>
-    );
+  return
+  <div></div>
 };
 
 export default MyReservationPage;
