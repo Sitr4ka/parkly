@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import './newBooking.css';
 import { TiTick } from 'react-icons/ti';
+import { useDispatch, useSelector } from 'react-redux';
+import Spot from '../Spot';
+import { addSpot,setReservation } from '../../../data/newBooking';
 // import
 
 const NewBooking = () => {
   const steps = ['Select spots', 'booking infos', 'payment'];
   const [currentStep, setCurrentStep] = useState(1);
   const [complete, setComplete] = useState(false);
-
+  const dispatch =useDispatch()
+  const newBooking= useSelector((state)=>state.newBooking) 
   return (
     <>
       <div className=" relative border flex  flex-col text-center justify-start py-6 px-8 h-[420px]">
@@ -59,10 +63,42 @@ const NewBooking = () => {
 };
 
 function SelectSpot() {
+   const dispatch =useDispatch()
+  const newBooking= useSelector((state)=>state.newBooking)
+  //  dispatch(addSpot({id:'80'}))
+//   const initialState={
+//     id:'',
+//     starTime:'',
+//     endTime:'',
+//     spot:[
+//         {
+//             id:'11',
+
+//         },
+//         {
+//             id:'40'
+//         },
+//           {
+//             id:'40'
+//         }
+//     ],
+// }
+//    dispatch(setReservation(initialState))
   return (
     <>
       <div className="mb-4">
-        <div className="h-48 border border-primary"></div>
+        {newBooking.spot.length}
+        <div className="h-48 border border-primary">
+          {newBooking.spot.map((spot)=>(
+             <Spot
+                            key={spot.id}
+                            id={spot.id}
+                            status={""}
+                            selected={()=>{}}
+                            onToggle={()=>{}}
+                />
+          ))}
+        </div>
         <input type="hidden" placeholder="Choose spot" className="" />
       </div>
     </>

@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Spot from './Spot';
 import Controls from './Controls';
-
+import { addSpot,deleteSpot } from '../../data/newBooking';
+import { useDispatch } from 'react-redux';
 const ROWS = 4;
 const COLS = 6;
 const SPOTS_PER_PAGE = ROWS * COLS;
@@ -60,17 +61,19 @@ export default function ParkingLayout({ spots: initialSpots, onSelect }) {
 
   const totalPages = Math.ceil(filteredSpots.length / SPOTS_PER_PAGE);
 
+  const dispatch =useDispatch()
   useEffect(() => {
     const result = filterSpotsByInterval(initialSpots, date, fromTime, toTime);
     setFilteredSpots(result);
     setPage(0);
-  }, [initialSpots, date, fromTime, toTime]);
+  }, [initialSpots, date, fromTime, toTime,dispatch]);
 
   const handleToggle = (id) => {
     setSelected((prev) => {
       const newSelected = new Set(prev);
       if (newSelected.has(id)) {
         newSelected.delete(id);
+        dispatch(deleteSpot({id:id}))
       } else {
         newSelected.add(id);
         if (onSelect) {
@@ -80,10 +83,13 @@ export default function ParkingLayout({ spots: initialSpots, onSelect }) {
             from: fromTime,
             to: toTime,
           });
+            dispatch(addSpot({id:id}))
         }
       }
       return newSelected;
     });
+  
+
   };
 
   const start = page * SPOTS_PER_PAGE;
