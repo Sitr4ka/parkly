@@ -10,12 +10,13 @@ const NewBooking = () => {
 
   return (
     <>
-      <div className=" relative border flex  flex-col text-center justify-start py-6 px-8 h-[420px]">
-        <div className="flex justify-between mb-8">
+      <div className=" border flex  bg-  flex-col text-center justify-start py-6 px-8 h-[420px]">
+        <div className="relative flex border bg-blue-200 justify-between mb-8">
           {steps?.map((step, i) => (
             <div
               key={i}
-              className={`step-item ${currentStep == i + 1 && 'active'} ${(i + 1 < currentStep || complete) && 'complete'}`}
+              className={`step-item ${currentStep == i + 1 && 'active'} 
+              ${(i + 1 < currentStep || complete) && 'complete'}`}
             >
               <div className="step mb-2">
                 {i + 1 < currentStep || complete ? <TiTick size={24} /> : i + 1}
@@ -36,7 +37,9 @@ const NewBooking = () => {
           <button
             className="btn bottom-2.5"
             onClick={() => {
-              currentStep == steps.length + 1 ? setComplete(true) : setCurrentStep((prev) => prev - 1);
+              currentStep == steps.length + 1
+                ? setComplete(true)
+                : setCurrentStep((prev) => prev - 1);
             }}
           >
             {currentStep > steps.length ? 'Finish' : 'Previous'}
@@ -95,15 +98,19 @@ function Payment() {
     <>
       <div className="flex flex-col items-start mb-4">
         <label htmlFor="paymentType">Payment</label>
-        <select className='border  w-full py-2 ps-3 rounded-md' name="paymentMethod" id="paymentMethod">
-            <option value="MVola">Mvola</option>
-            <option value="Airtel Money">Airtel Money</option>
-            <option value="Orange Money">Orange Money</option>
+        <select
+          className="border  w-full py-2 ps-3 rounded-md"
+          name="paymentMethod"
+          id="paymentMethod"
+        >
+          <option value="MVola">Mvola</option>
+          <option value="Airtel Money">Airtel Money</option>
+          <option value="Orange Money">Orange Money</option>
         </select>
       </div>
       <div className="flex flex-col items-start">
         <label htmlFor="number">Phone number</label>
-        <input className='formInput' type="number" name="paymentType" id="paymentType" />
+        <input className="formInput" type="number" name="paymentType" id="paymentType" />
       </div>
     </>
   );
