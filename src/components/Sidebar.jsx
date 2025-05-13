@@ -16,7 +16,7 @@ function Sidebar() {
   ];
 
   return (
-    <div className="w-60 h-screen z-50 bg-amber-100 px-2 flex flex-col border-r border-r-blue-500">
+    <div className="w-60 h-screen z-50 bg-amber-100 px-3 flex flex-col border-r border-r-blue-500">
       <div className="flex ps-8 pt-10 pb-8">
         <h1 className="text-3xl font-bold text-blue-600">Parkly.</h1>
       </div>
@@ -37,6 +37,6 @@ function Sidebar() {
       </nav>
     </div>
   );
-};
+}
 
 export default Sidebar;

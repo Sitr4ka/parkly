@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
+import SignUp from "./pages/auth/SignUp";
+import SignIn from "./pages/auth/SignIn";
 import NewReservationPage from "./pages/dashboard/NewReservationPage";
 import MyReservationPage from "./pages/dashboard/MyReservationPage";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -14,8 +16,8 @@ function App() {
             <Route path="reservation" element={<NewReservationPage />}/>
             <Route path="reservation-list" element={<MyReservationPage />}/>
           </Route>
-          {/* <Route path="/auth/signUp" element={<SignUp />}/> */}
-          {/* <Route path="/auth/signIn" element={<SignUp />}/> */}
+          <Route path="/auth/signUp" element={<SignUp/>}/>
+          <Route path="/auth/signIn" element={<SignIn />}/>
         </Routes>
       </BrowserRouter>
     </>
