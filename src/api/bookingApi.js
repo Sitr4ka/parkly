@@ -22,3 +22,14 @@ export async function fetchBookingById(id) {
   }
 }
 
+export const createBooking = async ({ spotId, startTime, endTime , status }) => {
+  try {
+    const response = await client.post('/bookings', { spotId, startTime, endTime , status });
+    console.log(response.data);
+    
+    return response.data;
+  } catch (err) {
+    const message = err.response?.data?.error || 'Something went wrong';
+    throw new Error(message);
+  }
+};
