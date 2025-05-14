@@ -14,8 +14,8 @@ function Sidebar() {
       path: "/dashboard/reservation-list",
     },
     {
-      text: "Slots",
-      path:"/dashboard/slot"
+      text: "Spots",
+      path:"/dashboard/spot"
     }
   ];
 
