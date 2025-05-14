@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+@layer components {
+  .step-item {
+    @apply relative flex flex-col justify-center items-center w-36;
+  }
+
+  .step-item:not(:first-child):before {
+    @apply content-[''] bg-blue-200 absolute w-full h-[3px] right-2/4 top-1/4;
+  }
+
+  .step {
+    @apply w-10 h-10 rounded-full flex items-center justify-center z-10 relative
+         bg-slate-700 font-semibold text-white;
+  }
+}
+
+.active .step {
+  @apply bg-blue-600;
+}
+
+.completed .step {
+    @apply bg-green-600;
+}

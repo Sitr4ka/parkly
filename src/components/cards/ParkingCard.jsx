@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import img from "../../assets/img.svg";
+import BookingModal from "../BookingModal";
 
-const ParkingCard = ({ parking }) => {
+function ParkingCard({ parking }) {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedParking, setSelectedParking] = useState(null);
+  const [newBooking, setNewBooking] = useState({
+    date: "",
+    startTime: "",
+    endTime: "",
+    parking: "",
+    spot: "",
+  });
+
+  const handleReserveClick = (parking) => {
+    console.log(parking);
+    
+    setSelectedParking(parking);
+    setShowModal(true);
+  }
+
+  const closeModal = () => {
+    setShowModal(false);
+  }
+
   return (
     <div className="card-container max-w-90 bg-amber-100 rounded-xl p-6 flex flex-col">
       <img className="mb-7" src={img} alt="parking-img" />
@@ -36,12 +58,17 @@ const ParkingCard = ({ parking }) => {
       </div>
 
       <button
-        // onClick={() => handleReserveClick(parking)}
+        onClick={ () => handleReserveClick(parking)}
         className="bg-blue-700 cursor-pointer py-2 text-amber-100 rounded-md
          hover:bg-blue-500 hover:text-amber-300"
       >
-        Réserver
+        Reserve
       </button>
+
+      <BookingModal 
+        showModal={showModal}
+        selectedParking={selectedParking}
+      />
     </div>
   );
 };

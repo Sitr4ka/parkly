@@ -2,7 +2,7 @@ export const parkings = [
   {
     id: 1,
     name: 'Parking Centre-ville',
-    image: '/images/parking1.jpg',
+    image: '../../assets/img.svg',
     address: '123 rue Exemple, Ville',
     rating: 4.3,
     availableSpots: 12,
