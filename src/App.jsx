@@ -5,6 +5,7 @@ import SignIn from "./pages/auth/SignIn";
 import NewReservationPage from "./pages/dashboard/NewReservationPage";
 import MyReservationPage from "./pages/dashboard/MyReservationPage";
 import Dashboard from "./pages/dashboard/Dashboard";
+import SlotPage from "./pages/dashboard/SlotPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="reservation" element={<NewReservationPage />}/>
             <Route path="reservation-list" element={<MyReservationPage />}/>
+            <Route path="slot" element={<SlotPage />}/>
           </Route>
           <Route path="/auth/signUp" element={<SignUp/>}/>
           <Route path="/auth/signIn" element={<SignIn />}/>
