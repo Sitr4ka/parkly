@@ -1,7 +1,7 @@
 import React from 'react';
 import SideBar from '../../components/SideBar';
 import Navbar from '../../components/Navbar';
-import ParkingList from '../../components/ParkingList';
+
 const Booking = () => {
   return (
     <>
@@ -15,9 +15,6 @@ const Booking = () => {
             <header className="h-16 bg-white shadow px-4 flex items-center">
               <Navbar />
             </header>
-            <main className="flex-1 p-3 bg-gray-100 overflow-y-auto">
-              <ParkingList />
-            </main>
           </div>
         </div>
       </div>

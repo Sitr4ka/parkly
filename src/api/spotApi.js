@@ -1,9 +1,9 @@
 // src/api/spotApi.js
 import client from './client.js';
 
-export async function fetchAllSpots() {
+export async function fetchAllSpots(id) {
   try {
-    const res = await client.get('/spots');
+    const res = await client.get(`/spots/${id}`);
     return res.data;
   } catch (err) {
     console.error('Error fetching all spots:', err);

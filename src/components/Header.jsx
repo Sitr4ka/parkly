@@ -1,7 +1,9 @@
 import React from 'react';
 import logo from './../assets/logo2.png';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="fixed w-full z-20 header h-[80px] flex items-center bg-gray-50">
@@ -22,8 +24,8 @@ const Header = () => {
             </a>
           </nav>
           <div className="callToAction flex gap-4 max-md:hidden">
-            <button className="button text-primary hover:text-white">Log In</button>
-            <button className="button text-white bg-primary hover:bg-blue-500">Sign Up</button>
+            <button onClick={() => {navigate('/signin')}} className="button text-primary hover:text-white">Log In</button>
+            <button onClick={() => {navigate('/signup')}} className="button text-white bg-primary hover:bg-blue-500">Sign Up</button>
           </div>
         </div>
       </div>

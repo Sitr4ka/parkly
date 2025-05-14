@@ -4,44 +4,32 @@ import PropTypes from 'prop-types';
 
 export default function Controls({ date, onDateChange, from, onFromChange, to, onToChange }) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
-      {/* Date input */}
-      <div className="flex flex-col">
-        <label htmlFor="filter-date" className="text-sm font-medium text-gray-700 mb-1">
-          Date
-        </label>
+     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+      <div>
+        <label className="text-sm font-medium text-gray-700 mb-1 block">Date</label>
         <input
-          id="filter-date"
           type="date"
           value={date}
-          onChange={(e) => onDateChange(e.target.value)}
-          className="p-2 border rounded-lg text-sm"
+          onChange={e => onDateChange(e.target.value)}
+          className="w-full p-1.5 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
-
-      <div className="flex flex-col">
-        <label htmlFor="filter-from" className="text-sm font-medium text-gray-700 mb-1">
-          From
-        </label>
+      <div>
+        <label className="text-sm font-medium text-gray-700 mb-1 block">Heure de début</label>
         <input
-          id="filter-from"
           type="time"
           value={from}
-          onChange={(e) => onFromChange(e.target.value)}
-          className="p-2 border rounded-lg text-sm"
+          onChange={e => onFromChange(e.target.value)}
+          className="w-full p-1.5 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
-
-      <div className="flex flex-col">
-        <label htmlFor="filter-to" className="text-sm font-medium text-gray-700 mb-1">
-          To
-        </label>
+      <div>
+        <label className="text-sm font-medium text-gray-700 mb-1 block">Heure de fin</label>
         <input
-          id="filter-to"
           type="time"
           value={to}
-          onChange={(e) => onToChange(e.target.value)}
-          className="p-2 border rounded-lg text-sm"
+          onChange={e => onToChange(e.target.value)}
+          className="w-full p-1.5 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
     </div>

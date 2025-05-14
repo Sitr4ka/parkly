@@ -4,19 +4,19 @@ import { parkings } from '../../data/parkings';
 
 export default function Parking() {
   return (
-    <section id="products" className="py-20 px-8 bg-gray-100">
+    <section id="products" className="py-20 px-8 ">
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
         Nos parkings disponibles
       </h2>
 
       <ul
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8
-                    bg-blue-50 rounded-2xl shadow-lg p-10 border border-gray-300"
+                    rounded-xl  p-10 "
       >
         {parkings &&
           parkings.map((parking) => (
             <li key={parking.id}>
-              <ParkingCard ParkingInfo={parking} />
+              <ParkingCard parking={parking} />
             </li>
           ))}
       </ul>

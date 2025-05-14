@@ -2,26 +2,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Spot({ id, status, selected, onToggle }) {
+export default function Spot({ id,code, status, selected, onToggle }) {
   const isDisabled = status === 'occupied';
 
   return (
-    <button
+   <button
       type="button"
       onClick={() => !isDisabled && onToggle(id)}
       disabled={isDisabled}
-      className={`h-10 rounded-2xl flex items-center justify-center text-sm sm:text-base transition
-      ${
-        isDisabled
-          ? 'bg-gray-400 text-white cursor-not-allowed'
-          : selected
-            ? 'bg-green-500 text-white cursor-pointer hover:opacity-90'
-            : 'bg-white text-gray-800 border cursor-pointer hover:bg-gray-100'
-      }
-    `}
+      className={`h-12 sm:h-14 px-3 rounded-xl flex items-center justify-center text-xs sm:text-sm font-medium transition-all duration-300
+        ${
+          isDisabled
+            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+            : selected
+              ? 'bg-green-600 text-white hover:bg-green-500'
+              : 'bg-white text-gray-700 shadow-sm hover:shadow-md hover:bg-gray-50'
+        }
+        ${!isDisabled && 'hover:scale-[1.02] active:scale-95'}
+      `}
     >
-      {id}
-    </button>
+   {code}
+</button>
+
+
+
   );
 }
 
