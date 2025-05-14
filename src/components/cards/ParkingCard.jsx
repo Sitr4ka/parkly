@@ -14,8 +14,6 @@ function ParkingCard({ parking }) {
   });
 
   const handleReserveClick = (parking) => {
-    console.log(parking);
-    
     setSelectedParking(parking);
     setShowModal(true);
   }

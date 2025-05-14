@@ -7,6 +7,20 @@ const BookingModal = ({ showModal, selectedParking }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isCompleted, setIsCompleted] = useState(false);
 
+  // Event Handler
+  const handleBtnTrigger = (e) => {
+    const isNext = e.target.innerHTML == "Next";
+    if (isNext) {
+      if (currentStep < 3) {
+        setCurrentStep((prev) => prev + 1);
+      }
+    } else {
+      if (currentStep > 1) {
+        setCurrentStep(currentStep - 1);
+      }
+    }
+  };
+
   return (
     <>
       {showModal && (
@@ -17,7 +31,7 @@ const BookingModal = ({ showModal, selectedParking }) => {
               <img src={img} alt="parking-img" />
             </div>
 
-            <div className="w-1/2 border-t-6 border-x-3 border-b-3 rounded-3xl py-6 px-8 border-blue-500">
+            <div className="relative w-1/2 border-t-6 border-x-3 border-b-3 rounded-3xl py-6 px-8 border-blue-500">
               <div className="flex justify-between">
                 {steps?.map((step, i) => (
                   <div
@@ -33,33 +47,26 @@ const BookingModal = ({ showModal, selectedParking }) => {
                 ))}
               </div>
 
-              <form method="post">
-                <div className="mx-6 mt-8">
-                  <div className="mb-4">
-                    <div className="text-[var(--black-grey)]">
-                      <label className="block text-sm font-medium mb-1">
-                        Date
-                      </label>
-                      <input
-                        type="date"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md bg-blue-200"
-                        // value={newEvent.start.split("T")[0]}
-                        // onChange={(e) => {
-                        //   const date = e.target.value;
-                        //   const startTime =
-                        //     newEvent.start.split("T")[1] || "09:00";
-                        //   const endTime = newEvent.end.split("T")[1] || "10:00";
-                        //   setNewEvent({
-                        //     ...newEvent,
-                        //     start: `${date}T${startTime}`,
-                        //     end: `${date}T${endTime}`,
-                        //   });
-                        // }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </form>
+              <div className="mx-6 mt-8">
+                {currentStep == 1 && <Schedule />}
+                {currentStep == 2 && <Spot />}
+                {currentStep == 3 && <Validation />}
+              </div>
+
+              <div className="absolute bottom-8 step-trigger w-80 flex justify-between ps-6 pe-8">
+                <button
+                  onClick={handleBtnTrigger}
+                  className="w-20 hover:bg-blue-400 hover:border-blue-700 hover:text-amber-100 cursor-pointer py-2 border border-gray-600 rounded-md text-gray-400"
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={handleBtnTrigger}
+                  className="w-20 hover:bg-blue-400 hover:border-blue-700 hover:text-amber-100 cursor-pointer py-2 border border-gray-600 rounded-md text-gray-400"
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -69,3 +76,51 @@ const BookingModal = ({ showModal, selectedParking }) => {
 };
 
 export default BookingModal;
+
+const Schedule = () => {
+  return (
+    <>
+      <form method="post">
+        <div className="input-group mb-4">
+          <label className="block text-sm font-medium mb-1">Date</label>
+          <input
+            type="date"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md bg-blue-200"
+          />
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="input-group mb-4">
+            <label className="block text-sm font-medium mb-1">Start Time</label>
+            <input
+              type="time"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md bg-blue-200"
+            />
+          </div>
+          <div className="input-group mb-4">
+            <label className="block text-sm font-medium mb-1">End Time</label>
+            <input
+              type="time"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md bg-blue-200"
+            />
+          </div>
+        </div>
+      </form>
+    </>
+  );
+};
+
+const Spot = () => {
+  return (
+    <>
+      <h1 className="text-3xl">Spot</h1>
+    </>
+  );
+};
+
+const Validation = () => {
+  return (
+    <>
+      <h1 className="text-3xl">Validation</h1>
+    </>
+  );
+};
