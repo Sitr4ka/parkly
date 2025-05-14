@@ -3,7 +3,7 @@ import './newBooking.css';
 import { TiTick } from 'react-icons/ti';
 import { useDispatch, useSelector } from 'react-redux';
 import Spot from '../Spot';
-import { addSpot,setReservation } from '../../../data/newBooking';
+import { addSpot,setReservation,setStartime } from '../../../data/newBooking';
 // import
 
 const NewBooking = () => {
@@ -63,12 +63,13 @@ const NewBooking = () => {
 };
 
 function SelectSpot() {
-   const dispatch =useDispatch()
+  const dispatch =useDispatch()
   const newBooking= useSelector((state)=>state.newBooking)
+  // dispatch(setStartime("4"))
   return (
     <>
       <div className="mb-4">
-        {newBooking.spot.length}
+        {newBooking.starTime}
         <div className="h-48 border border-primary">
           {newBooking.spot.map((spot)=>(
              <Spot
@@ -87,6 +88,7 @@ function SelectSpot() {
 }
 
 function BookingInfo() {
+  const newBooking= useSelector((state)=>state.newBooking)
   return (
     <>
       <div className="bookingInfo">
@@ -96,11 +98,11 @@ function BookingInfo() {
         </div>
         <div className="flex text-sm justify-between mb-3">
           <label className="font-medium">Arrival-time</label>
-          <div className="font-light"></div>
+          <div className="font-light">{newBooking.starTime}  </div>
         </div>
         <div className="flex text-sm justify-between mb-3">
           <label className="font-medium">Departure-time</label>
-          <div className="font-light"></div>
+          <div className="font-light">{newBooking.endTime}</div>
         </div>
       </div>
     </>

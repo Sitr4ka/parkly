@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Spot from './Spot';
 import Controls from './Controls';
-import { addSpot,deleteSpot } from '../../data/newBooking';
+import { addSpot,setStartime,setEndTime,deleteSpot } from '../../data/newBooking';
 import { useDispatch } from 'react-redux';
 const ROWS = 4;
 const COLS = 6;
@@ -99,12 +99,20 @@ export default function ParkingLayout({ spots: initialSpots, onSelect }) {
     });
    if(!selected.has(id))dispatch(addSpot({id:id}))
     else  dispatch(deleteSpot({id:id}))
-      // alert("hello") 
+     
 
   };
 
   const start = page * SPOTS_PER_PAGE;
   const pageSpots = filteredSpots.slice(start, start + SPOTS_PER_PAGE);
+  const handleFromTime=(time)=>{
+    setFromTime(time)
+    dispatch(setStartime(time))
+  }
+  const handleToTime=(time)=>{
+    setToTime(time)
+    dispatch(setEndTime(time))
+  }
   return (
     
     <section className="flex-1 p-4 sm:p-6 bg-gray-100 overflow-hidden">
@@ -113,9 +121,9 @@ export default function ParkingLayout({ spots: initialSpots, onSelect }) {
           date={date}
           onDateChange={setDate}
           from={fromTime}
-          onFromChange={setFromTime}
+          onFromChange={handleFromTime}
           to={toTime}
-          onToChange={setToTime}
+          onToChange={handleToTime}
         />
 
         <div className="flex-1 flex flex-col pt-4">
