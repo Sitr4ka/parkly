@@ -66,38 +66,45 @@ export default function ParkingLayout({ spots: initialSpots, onSelect }) {
     const result = filterSpotsByInterval(initialSpots, date, fromTime, toTime);
     setFilteredSpots(result);
     setPage(0);
-  }, [initialSpots, date, fromTime, toTime,dispatch]);
+   
+  }, [initialSpots, date, fromTime, toTime]);
 
   const handleToggle = (id) => {
+    let newSelected
     setSelected((prev) => {
-      const newSelected = new Set(prev);
+       newSelected = new Set(prev);
       if (newSelected.has(id)) {
         newSelected.delete(id);
-        dispatch(deleteSpot({id:id}))
+        // dispatch(deleteSpot({id:id}))
       } else {
         newSelected.add(id);
-        if (onSelect) {
-          onSelect({
-            id,
-            date,
-            from: fromTime,
-            to: toTime,
-          });
-            dispatch(addSpot({id:id}))
-        }
+        // dispatch(addSpot({id:id}))
+        // if (onSelect) {
+        //   onSelect({
+        //     id,
+        //     date,
+        //     from: fromTime,
+        //     to: toTime,
+        //   });
+       
+        // }
       }
+    //    if (newSelected.has(id)) {
+    //   dispatch(addSpot({ id }));
+    // } else {
+    //   dispatch(deleteSpot({ id }));
+    // }
+    
       return newSelected;
     });
-  
+   if(!selected.has(id))dispatch(addSpot({id:id}))
+    else  dispatch(deleteSpot({id:id}))
+      // alert("hello") 
 
   };
 
   const start = page * SPOTS_PER_PAGE;
   const pageSpots = filteredSpots.slice(start, start + SPOTS_PER_PAGE);
-// useEffect(()=>{
-      
-//     },)
-
   return (
     
     <section className="flex-1 p-4 sm:p-6 bg-gray-100 overflow-hidden">

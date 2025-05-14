@@ -24,7 +24,9 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<ReservationPage />} />
-        </Routes>
+        <Route path='/test-FORM' element= {< StepFormTest />}/>
+       
+       </Routes>
       </BrowserRouter>
     </>
   );

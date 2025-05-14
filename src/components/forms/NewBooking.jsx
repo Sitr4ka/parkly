@@ -65,25 +65,6 @@ const NewBooking = () => {
 function SelectSpot() {
    const dispatch =useDispatch()
   const newBooking= useSelector((state)=>state.newBooking)
-  //  dispatch(addSpot({id:'80'}))
-//   const initialState={
-//     id:'',
-//     starTime:'',
-//     endTime:'',
-//     spot:[
-//         {
-//             id:'11',
-
-//         },
-//         {
-//             id:'40'
-//         },
-//           {
-//             id:'40'
-//         }
-//     ],
-// }
-//    dispatch(setReservation(initialState))
   return (
     <>
       <div className="mb-4">

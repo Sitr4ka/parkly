@@ -19,7 +19,7 @@ const newBookingSlice=createSlice({
             state.spot = [...state.spot, action.payload]
         },
         deleteSpot:(state,action)=>{
-            state.spot=state.spot.filter(s=>s.id==action.payload.id)
+            state.spot=state.spot.filter(s=>s.id!==action.payload.id)
         }
     }
 })

@@ -1,14 +1,24 @@
 // Spot.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { addSpot,deleteSpot } from '../../data/newBooking';
+import { useDispatch } from 'react-redux';
 export default function Spot({ id, status, selected, onToggle }) {
   const isDisabled = status === 'occupied';
-
+  const dispatch=useDispatch()
   return (
     <button
       type="button"
-      onClick={() => !isDisabled && onToggle(id)}
+      // onClick={() => !isDisabled && onToggle(id)}
+      onClick={()=>{
+        if(!isDisabled){
+          onToggle(id)
+          // if(!selected)dispatch(addSpot({id:id}))
+          // else {
+            // alert("delete")
+          // }
+        }
+      }}
       disabled={isDisabled}
       className={`h-10 rounded-2xl flex items-center justify-center text-sm sm:text-base transition
       ${
