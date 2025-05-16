@@ -4,7 +4,7 @@ import { TiTick } from 'react-icons/ti';
 import { useDispatch, useSelector } from 'react-redux';
 import Spot from '../Spot';
 import { addSpot,setReservation,setStartime } from '../../../data/newBooking';
-// import
+import ParkingLayout from '../ParkingLayout';
 
 const NewBooking = () => {
   const steps = ['Select spots', 'booking infos', 'payment'];
@@ -73,14 +73,22 @@ function SelectSpot() {
         <div className="h-48 border border-primary">
           {newBooking.spot.map((spot)=>(
              <Spot
-                            key={spot.id}
-                            id={spot.id}
-                            status={""}
-                            selected={()=>{}}
-                            onToggle={()=>{}}
-                />
+               key={spot.id}
+                id={spot.id}
+                code={spot.code}
+                status={spot.status}
+                selected={()=>{}}
+                onToggle={()=>{}} 
+             
+              />
           ))}
         </div>
+        <div className='flex-1 flex items-center justify-center overflow-auto'>
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 bg-gray-50 p-3 rounded-2xl'>
+
+            </div>
+        </div>
+        
         <input type="hidden" placeholder="Choose spot" className="" />
       </div>
     </>

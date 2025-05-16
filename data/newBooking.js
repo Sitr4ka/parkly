@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState={
     id:'',
-    starTime:'ss',
+    starTime:'',
     endTime:'',
-    spot:[
-      
-    ],
+    spot:[],
 }
 
 const newBookingSlice=createSlice({

@@ -5,7 +5,8 @@ import Spot from './Spot';
 import Controls from './Controls';
 import { useParams } from 'react-router-dom';
 import { fetchAllSpots } from '../api/spotApi'; 
-
+import { addSpot,setStartime,setEndTime,deleteSpot } from '../../data/newBooking';
+import { useDispatch } from 'react-redux';
 const ROWS = 4;
 const COLS = 6;
 const SPOTS_PER_PAGE = ROWS * COLS;
@@ -60,6 +61,7 @@ export default function ParkingLayout({ onSelect }) {
 
   const totalPages = Math.ceil(filteredSpots.length / SPOTS_PER_PAGE);
 
+  const dispatch =useDispatch()
   // Charger les spots depuis le backend
   useEffect(() => {
     async function loadSpots() {
@@ -84,6 +86,7 @@ export default function ParkingLayout({ onSelect }) {
   }, [allSpots, date, fromTime, toTime]);
 
   const handleToggle = (id) => {
+
     setSelected((prev) => {
       const newSelected = new Set(prev);
       if (newSelected.has(id)) {
@@ -101,6 +104,11 @@ export default function ParkingLayout({ onSelect }) {
       }
       return newSelected;
     });
+    if(!selected.has(id))dispatch(addSpot({id:id}))
+    else  dispatch(deleteSpot({id:id}))
+   
+     
+
   };
 
   const start = page * SPOTS_PER_PAGE;
