@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import img from "../assets/img.svg";
 import { TiTick } from "react-icons/ti";
 
-const BookingModal = ({ showModal, selectedParking }) => {
-  const [formData, setFormData] = useState({
-    startDate: "",
-    endDate: "",
-    spot: "",
-  });
+const BookingModal = ({ showModal, selectedParking, setSelectedParking }) => {
   const steps = ["schedule", "spot", "validation"];
   const [currentStep, setCurrentStep] = useState(1);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [formData, setFormData] = useState({
+    bookingDate: "",
+    startTime: "",
+    endTime: "",
+    spot: "",
+  });
 
   // Event Handler
   const handleBtnTrigger = (e) => {
@@ -52,10 +53,16 @@ const BookingModal = ({ showModal, selectedParking }) => {
                 ))}
               </div>
 
-              <div className="mx-6 mt-5">
-                {currentStep == 1 && <Schedule data={formData} />}
-                {currentStep == 2 && <Spot />}
-                {currentStep == 3 && <Validation />}
+              <div className="mx-6 mt-3">
+                {currentStep == 1 && (
+                  <Schedule formData={formData} setFormData={setFormData} />
+                )}
+                {currentStep == 2 && (
+                  <Spot formData={formData} setFormData={setFormData} />
+                )}
+                {currentStep == 3 && (
+                  <Validation formData={formData} setFormData={setFormData} />
+                )}
               </div>
 
               <div className="absolute bottom-8 step-trigger w-80 flex justify-between ps-6 pe-8">
@@ -82,17 +89,24 @@ const BookingModal = ({ showModal, selectedParking }) => {
 
 export default BookingModal;
 
-const Schedule = ({ data }) => {
-  const { startDate, endDate, spot } = data;
+const Schedule = ({ formData, setFormData }) => {
+  const handleChange = (e) => {
+    setFormData(() => {
+      return { ...formData, [e.target.name]: e.target.value };
+    });
+  };
+
   return (
     <>
-      <form method="post">
+      <form method="post" className="mt-5">
         <div className="input-group mb-4">
           <label className="block text-sm font-medium mb-1">Start Date</label>
           <input
             type="date"
+            name="bookingDate"
             className="w-full px-3 py-2 border border-gray-300 rounded-md bg-blue-200"
-            value="2025-05-05"
+            value={formData.bookingDate}
+            onChange={handleChange}
           />
         </div>
         <div className="grid grid-cols-2 gap-3">
@@ -100,16 +114,20 @@ const Schedule = ({ data }) => {
             <label className="block text-sm font-medium mb-1">Start Time</label>
             <input
               type="time"
+              name="startTime"
               className="w-full px-3 py-2 border border-gray-300 rounded-md bg-blue-200"
-              value="17:00"
+              value={formData.startTime}
+              onChange={handleChange}
             />
           </div>
           <div className="input-group mb-4">
             <label className="block text-sm font-medium mb-1">End Time</label>
             <input
               type="time"
+              name="endTime"
               className="w-full px-3 py-2 border border-gray-300 rounded-md bg-blue-200"
-              value="20:00"
+              value={formData.endTime}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -118,76 +136,102 @@ const Schedule = ({ data }) => {
   );
 };
 
-const Spot = () => {
+function Spot({ formData, setFormData }) {
+  const [selectedSpot, setSelectedSpot] = useState(null);
+  const toggleSelectedSpot = (e, spot) => {
+    setSelectedSpot((prev) => {
+      const newSpot = prev === spot ? null : spot;
+
+      setFormData((formData) => ({
+        ...formData,
+        spot: newSpot ? `A${newSpot}` : "",
+      }));
+
+      return newSpot;
+    });
+    // setSelectedSpot((prev) => (prev == spot ? null : spot));
+    // setFormData((formData) => ({...formData, "spot": selectedSpot ? "" : e.target.innerText}));
+  };
+
   return (
     <>
-      <div className="flex flex-wrap items-start justify-center gap-3 border px-3 py-2">
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R1-C1</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R1-C2</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R1-C3</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R1-C4</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R2-C1</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R2-C2</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R2-C3</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R2-C4</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R3-C1</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R3-C2</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R3-C3</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R3-C4</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R4-C1</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center bg-green-500">R4-C2</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R4-C3</div>
-        <div className="w-12 text-sm px-1 py-2 hover:bg-green-200 cursor-pointer border rounded-md text-center">R4-C4</div>
+      <div className="h-53 flex flex-col justify-between px-6 py-3 gap-2">
+        <div className="grid grid-cols-4 gap-2 overflow-hidden">
+          {Array.from({ length: 14 }).map((_, index) => {
+            const spotIndex = index + 1;
+
+            return (
+              <div
+                key={spotIndex}
+                className={`text-center border cursor-pointer hover:bg-green-200} 
+                  ${
+                    `A${spotIndex}` == formData.spot
+                      ? "bg-green-900 text-white"
+                      : ""
+                  }`}
+                onClick={(e) => toggleSelectedSpot(e, spotIndex)}
+              >
+                {`A${spotIndex}`}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="h-10 flex justify-between items-center py-6">
+          <label className="font-bold">Selected Spot:</label>
+          <input
+            type="text"
+            name="spotData"
+            className={`w-16 text-center border cursor-pointer bg-blue-600 text-white`}
+            value={`${formData.spot}`}
+          />
+        </div>
       </div>
     </>
   );
-};
+}
 
-const Validation = () => {
+const Validation = ({ formData, setFormData }) => {
   return (
     <>
       <div className="flex justify-between items-center mb-2">
         <label className="">Date:</label>
         <input
-          type="date"
           className="w-2/3 px-3 py-2 border border-gray-300 rounded-md bg-blue-200"
-          name=""
-          id=""
+          type="date"
+          name="confirmedDate"
+          value={formData.bookingDate}
           readOnly
-          value="2025-05-05"
         />
       </div>
       <div className="flex justify-between items-center mb-2">
         <label className="">Start Time:</label>
         <input
-          type="time"
           className="w-2/3 px-3 py-2 border border-gray-300 rounded-md bg-blue-200"
-          name=""
-          id=""
+          type="time"
+          name="confirmedStartTime"
+          value={formData.startTime}
           readOnly
-          value="17:00"
         />
       </div>
       <div className="flex justify-between items-center mb-2">
         <label className="">End Time:</label>
         <input
-          type="time"
           className="w-2/3 px-3  py-2 border border-gray-300 rounded-md bg-blue-200"
-          name=""
-          id=""
+          type="time"
+          name="confirmedEndTime"
+          value={formData.endTime}
           readOnly
-          value="20:00"
         />
       </div>
       <div className="flex justify-between items-center mb-2">
         <label className="">Spot:</label>
         <input
-          type="text"
           className="w-2/3 px-3  py-2 border border-gray-300 rounded-md bg-blue-200"
-          name=""
-          id=""
+          type="text"
+          name="spot"
+          value={formData.spot}
           readOnly
-          value="R4-C2"
         />
       </div>
     </>

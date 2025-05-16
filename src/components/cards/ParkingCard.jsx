@@ -5,13 +5,13 @@ import BookingModal from "../BookingModal";
 function ParkingCard({ parking }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedParking, setSelectedParking] = useState(null);
-  const [newBooking, setNewBooking] = useState({
-    date: "",
-    startTime: "",
-    endTime: "",
-    parking: "",
-    spot: "",
-  });
+  // const [newBooking, setNewBooking] = useState({
+  //   date: "",
+  //   startTime: "",
+  //   endTime: "",
+  //   parking: "",
+  //   spot: "",
+  // });
 
   const handleReserveClick = (parking) => {
     setSelectedParking(parking);
@@ -66,6 +66,7 @@ function ParkingCard({ parking }) {
       <BookingModal 
         showModal={showModal}
         selectedParking={selectedParking}
+        setSelectedParking={setSelectedParking}
       />
     </div>
   );
