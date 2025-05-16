@@ -4,7 +4,7 @@ import Sidebar from '../../components/SideBar';
 import ParkingLayout from '../../components/ParkingLayout'
 import ReservationForm from '../../components/ReservationForm'
 import fakeSpots from '../../../data/fakeSpots'
-
+import NewBooking from '../../components/forms/NewBooking';
 export default function Reservation() {
   const [selectedReservation, setSelectedReservation] = useState(null);
 
@@ -26,7 +26,8 @@ export default function Reservation() {
       <main className="flex-1 p-4 lg:p-6 bg-gray-100 overflow-y-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 h-full">
           <ParkingLayout spots={fakeSpots} onSelect={setSelectedReservation} />
-          <ReservationForm selectedReservation={selectedReservation} />
+          {/* <ReservationForm selectedReservation={selectedReservation} /> */}
+          <NewBooking/>
         </div>
       </main>
     </div>
