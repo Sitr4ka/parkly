@@ -113,7 +113,14 @@ export default function ParkingLayout({ onSelect }) {
 
   const start = page * SPOTS_PER_PAGE;
   const pageSpots = filteredSpots.slice(start, start + SPOTS_PER_PAGE);
-
+ const handleFromTime=(time)=>{
+    setFromTime(time)
+    dispatch(setStartime(time))
+  }
+  const handleToTime=(time)=>{
+    setToTime(time)
+    dispatch(setEndTime(time))
+  }
   return (
     <section className="flex-1 p-4 sm:p-6 bg-gray-100 overflow-hidden">
       <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-6 flex flex-col h-full">
@@ -121,9 +128,9 @@ export default function ParkingLayout({ onSelect }) {
           date={date}
           onDateChange={setDate}
           from={fromTime}
-          onFromChange={setFromTime}
+          onFromChange={handleFromTime}
           to={toTime}
-          onToChange={setToTime}
+          onToChange={handleToTime}
         />
 
         <div className="flex-1 flex items-center justify-center overflow-auto">

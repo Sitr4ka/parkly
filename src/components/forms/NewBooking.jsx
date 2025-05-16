@@ -65,23 +65,51 @@ const NewBooking = () => {
 function SelectSpot() {
   const dispatch =useDispatch()
   const newBooking= useSelector((state)=>state.newBooking)
+   const [selected, setSelected] = useState(new Set());
+  const handleToggle = (id) => {
+  
+      setSelected((prev) => {
+        const newSelected = new Set(prev);
+        if (newSelected.has(id)) {
+          newSelected.delete(id);
+        } else {
+          newSelected.add(id);
+          // if (onSelect) {
+          //   onSelect({
+          //     id,
+          //     date,
+          //     from: fromTime,
+          //     to: toTime,
+          //   });
+          // }
+        }
+        return newSelected;
+      });
+    
+     
+       
+  
+    };
   // dispatch(setStartime("4"))
   return (
     <>
       <div className="mb-4">
         {newBooking.starTime}
         <div className="h-48 border border-primary">
-          {newBooking.spot.map((spot)=>(
+         
+          <div className='grid grid-cols-4 gap-2'>
+             {newBooking.spot.map((spot)=>(
              <Spot
                key={spot.id}
                 id={spot.id}
                 code={spot.code}
                 status={spot.status}
-                selected={()=>{}}
-                onToggle={()=>{}} 
+                  selected={true}
+                onToggle={handleToggle}
              
               />
           ))}
+          </div>
         </div>
         <div className='flex-1 flex items-center justify-center overflow-auto'>
             <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 bg-gray-50 p-3 rounded-2xl'>
