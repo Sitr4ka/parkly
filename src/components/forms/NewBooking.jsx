@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Spot from '../Spot';
 import { addSpot,setReservation,setStartime } from '../../../data/newBooking';
 import ParkingLayout from '../ParkingLayout';
-
+import { createBooking } from '../../api/bookingApi';
+import client from '../../api/client';
 const NewBooking = () => {
   const steps = ['Select spots', 'booking infos', 'payment'];
   const [currentStep, setCurrentStep] = useState(1);
@@ -125,6 +126,23 @@ function SelectSpot() {
 
 function BookingInfo() {
   const newBooking= useSelector((state)=>state.newBooking)
+  const handleCreateBoking=async()=>{
+    try{
+const data={
+      // spotId:'e1f40292-511a-408d-9904-81d6b73dbe83',
+      spotId:newBooking.spot[0].id,
+      startTime:'2025-05-14 06:40:56.757',
+      endTime:'2025-05-14 06:40:56.757',
+      status:'PENDING'
+    }
+    const r = await createBooking(data)
+    console.log(data)
+    console.log(r)
+    }catch(e){
+      console.error()
+    }
+    
+  }
   return (
     <>
       <div className="bookingInfo">
@@ -140,6 +158,11 @@ function BookingInfo() {
           <label className="font-medium">Departure-time</label>
           <div className="font-light">{newBooking.endTime}</div>
         </div>
+        <div>
+          <button className=' bg-amber-300 border-t-cyan-600'
+            onClick={handleCreateBoking}
+          >create booking</button>
+        </div>
       </div>
     </>
   );
@@ -147,6 +170,7 @@ function BookingInfo() {
 
 function Payment() {
   return (
+    // console.log(r)
     <>
       <div className="flex flex-col items-start mb-4">
         <label htmlFor="paymentType">Payment</label>
