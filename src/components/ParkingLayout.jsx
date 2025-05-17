@@ -5,7 +5,7 @@ import Spot from './Spot';
 import Controls from './Controls';
 import { useParams } from 'react-router-dom';
 import { fetchAllSpots } from '../api/spotApi'; 
-import { addSpot,setStartime,setEndTime,deleteSpot } from '../../data/newBooking';
+import {setDateBooking ,addSpot,setStartime,setEndTime,deleteSpot } from '../../data/newBooking';
 import { useDispatch } from 'react-redux';
 const ROWS = 4;
 const COLS = 6;
@@ -113,7 +113,12 @@ export default function ParkingLayout({ onSelect }) {
 
   const start = page * SPOTS_PER_PAGE;
   const pageSpots = filteredSpots.slice(start, start + SPOTS_PER_PAGE);
- const handleFromTime=(time)=>{
+ 
+  const handleDate=(d)=>{
+    setDate(d)
+    dispatch(setDateBooking(d))
+  }
+  const handleFromTime=(time)=>{
     setFromTime(time)
     dispatch(setStartime(time))
   }
@@ -126,7 +131,7 @@ export default function ParkingLayout({ onSelect }) {
       <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-6 flex flex-col h-full">
         <Controls
           date={date}
-          onDateChange={setDate}
+          onDateChange={handleDate}
           from={fromTime}
           onFromChange={handleFromTime}
           to={toTime}

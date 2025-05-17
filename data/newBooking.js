@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState={
     id:'',
-    starTime:'',
+    date:'dd',
+    startTime:'',
     endTime:'',
     spot:[],
 }
@@ -16,8 +17,12 @@ const newBookingSlice=createSlice({
         addSpot:(state,action)=>{
             state.spot = [...state.spot, action.payload]
         },
+        setDateBooking:(state,action)=>{
+            const d ={...state,date:action.payload}
+            return d
+        },
         setStartime:(state,action)=>{
-            const d={...state,starTime:action.payload}
+            const d={...state,startTime:action.payload}
             return d
         },
         setEndTime:(state,action)=>{
@@ -30,5 +35,5 @@ const newBookingSlice=createSlice({
         }
     }
 })
-export const {setReservation,addSpot,deleteSpot,setStartime,setEndTime}=newBookingSlice.actions
+export const {setReservation,addSpot,deleteSpot,setStartime,setEndTime,setDateBooking}=newBookingSlice.actions
 export default newBookingSlice.reducer

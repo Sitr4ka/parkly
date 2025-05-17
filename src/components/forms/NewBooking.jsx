@@ -128,15 +128,18 @@ function BookingInfo() {
   const newBooking= useSelector((state)=>state.newBooking)
   const handleCreateBoking=async()=>{
     try{
-const data={
+      const data={
       // spotId:'e1f40292-511a-408d-9904-81d6b73dbe83',
       spotId:newBooking.spot[0].id,
-      startTime:'2025-05-14 06:40:56.757',
-      endTime:'2025-05-14 06:40:56.757',
+      // startTime:'2025-05-14 06:40:56.757',
+    //  endTime:'2025-05-14 06:40:56.757',
+        startTime:`${newBooking.date}T${newBooking.startTime}:00`,
+     endTime:`${newBooking.date}T${newBooking.endTime}:00`,
       status:'PENDING'
     }
+    console.log(data.startTime)
+    
     const r = await createBooking(data)
-    console.log(data)
     console.log(r)
     }catch(e){
       console.error()
@@ -148,11 +151,11 @@ const data={
       <div className="bookingInfo">
         <div className="flex text-sm justify-between mb-3">
           <label className="font-medium">Date</label>
-          <div className="font-light"></div>
+          <div className="font-light">{newBooking.date}</div>
         </div>
         <div className="flex text-sm justify-between mb-3">
           <label className="font-medium">Arrival-time</label>
-          <div className="font-light">{newBooking.starTime}  </div>
+          <div className="font-light">{newBooking.startTime}  </div>
         </div>
         <div className="flex text-sm justify-between mb-3">
           <label className="font-medium">Departure-time</label>
