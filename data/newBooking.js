@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState={
     id:'',
-    date:'dd',
-    startTime:'',
-    endTime:'',
+    date: new Date().toLocaleDateString('fr-CA').slice(0, 10),
+    startTime:'08:00',
+    endTime:'09:00',
     spot:[],
 }
 
