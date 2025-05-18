@@ -8,7 +8,7 @@ export default function Spot({ id,code, status, selected, onToggle }) {
   return (
    <button
       type="button"
-      onClick={() => !isDisabled && onToggle(id)}
+      onClick={() => !isDisabled && onToggle(id,code)}
       disabled={isDisabled}
       className={`h-12 sm:h-14 px-3 rounded-xl flex items-center justify-center text-xs sm:text-sm font-medium transition-all duration-300
         ${

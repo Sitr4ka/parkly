@@ -85,7 +85,7 @@ export default function ParkingLayout({ onSelect }) {
     setPage(0);
   }, [allSpots, date, fromTime, toTime]);
 
-  const handleToggle = (id) => {
+  const handleToggle = (id,code) => {
 
     setSelected((prev) => {
       const newSelected = new Set(prev);
@@ -104,7 +104,7 @@ export default function ParkingLayout({ onSelect }) {
       }
       return newSelected;
     });
-    if(!selected.has(id))dispatch(addSpot({id:id}))
+    if(!selected.has(id))dispatch(addSpot({id:id,code:code}))
     else  dispatch(deleteSpot({id:id}))
    
      
