@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState={
     id:'',
     date: new Date().toLocaleDateString('fr-CA').slice(0, 10),

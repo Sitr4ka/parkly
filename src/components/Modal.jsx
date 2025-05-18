@@ -17,7 +17,7 @@ const Modal= ({show=false,setShow=()=>{},children})=>{
 export const ModalHeader=({children})=>{
     return(
         <>
-            <div className="flex items-center justify-between p-4 md:p-5 ">
+            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200 ">
                 {children}         
             </div>
         </>
@@ -26,7 +26,7 @@ export const ModalHeader=({children})=>{
 export const ModalBody=({children})=>{
     return (
         <>
-            <div className="p-4 md:p-5 space-y-4">
+            <div className="p-4 md:p-5 space-y-4 border-b rounded-t dark:border-gray-600 border-gray-200">
                 {children}
             </div>
         </>
