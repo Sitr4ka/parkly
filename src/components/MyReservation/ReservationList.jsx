@@ -1,15 +1,20 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteReservation } from '../../../data/reservationSlice';
 import { useState } from 'react';
-
+import Modal from '../Modal';
+import { ModalHeader,ModalBody,ModalFooter } from '../Modal';
+import { FaTimes } from 'react-icons/fa';
 const ReservationList = () => {
   const reservations = useSelector((state) => state.reservations);
   const dispatch = useDispatch();
   const handleDelete=(id)=>{
     dispatch(deleteReservation(id))
+    setshowCancel(false)
   }
   const [search,setSearch]=useState('')
-  
+  const [showPayd,setShoPayd]=useState(false)
+  const [showCancel,setshowCancel]=useState(false)
+  const [idDelete,setiDelete]=useState('')
   // Search
   const filterRes=(reservations==[])?[]:reservations.filter(
     r=>r.id.toLowerCase().includes(search.toLocaleLowerCase())||
@@ -69,9 +74,13 @@ const ReservationList = () => {
                             <div className='flex items-center space-x-2'>
                                 <button class="bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50"  
                                     disabled={r.status.toLowerCase()==="payed"} 
+                                    onClick={()=>setShoPayd(true)}
                                 >Pay</button>
                                 <button className="bg-gray-500 text-white px-3 py-1 rounded"
-                                  onClick={()=>handleDelete(r.id)}
+                                  onClick={()=>{
+                                    setiDelete(r.id)
+                                    setshowCancel(true)
+                                  }}
                                   >
                                     Cancel
                                 </button>
@@ -85,6 +94,74 @@ const ReservationList = () => {
                     </tbody>
                 </table>
             </div>
+            <Modal show={showPayd}>
+              <ModalHeader>
+                    <button type="button" className="text-red-400 bg-transparent hover:bg-red-200
+                                                       hover:text-amber-50 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center
+                                                        items-center "
+                onClick={()=>setShoPayd(false)}
+              >
+                  <FaTimes></FaTimes>
+                              <span class="sr-only">Close modal</span>
+                  </button>
+              </ModalHeader>
+              <ModalBody>
+                      <div className="flex flex-col items-start mb-4">
+                        <label htmlFor="paymentType">Payment</label>
+                          <select className='border  w-full py-2 ps-3 rounded-md' name="paymentMethod" id="paymentMethod">
+                            <option value="MVola">Mvola</option>
+                            <option value="Airtel Money">Airtel Money</option>
+                            <option value="Orange Money">Orange Money</option>
+                        </select>
+                    </div>
+                    <div className="flex flex-col items-start">
+                      <label htmlFor="number">Phone number</label>
+                      <input className='formInput' type="number" name="paymentType" id="paymentType" />
+                    </div>
+          </ModalBody>
+              <ModalFooter>
+                <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600
+                                      dark:hover:bg-blue-700
+                                      dark:focus:ring-blue-800"
+                                      onClick={()=>{}}
+                                  >
+                                      
+                                  Payd</button>
+                          <button  type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100
+                          dark:focus:ring-gray-700 dark:bg-gray-800
+                            dark:text-gray-400 dark:border-gray-600
+                            dark:hover:text-white dark:hover:bg-gray-700"
+                          onClick={()=>setShoPayd(false)}
+                          >Decline</button>
+              </ModalFooter>
+            </Modal>
+            <Modal show={showCancel}>
+                <ModalHeader>
+                      
+                </ModalHeader>
+                <ModalBody>
+                    <p>Would you like to cancel for your parking reservation?</p>
+                </ModalBody>
+                <ModalFooter>
+                  <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600
+                                      dark:hover:bg-blue-700
+                                      dark:focus:ring-blue-800"
+                                      onClick={()=>{
+                                        handleDelete(idDelete)
+                                        
+                                      }}
+                                  >
+                                      
+                                  Yes</button>
+                          <button  type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100
+                          dark:focus:ring-gray-700 dark:bg-gray-800
+                            dark:text-gray-400 dark:border-gray-600
+                            dark:hover:text-white dark:hover:bg-gray-700"
+                          onClick={()=>setshowCancel(false)}
+                          >No</button>
+                        
+                </ModalFooter>
+            </Modal>
           </div>      
     </>
   );
