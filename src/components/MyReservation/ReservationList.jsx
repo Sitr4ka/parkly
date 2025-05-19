@@ -1,28 +1,41 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteReservation } from '../../../data/reservationSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../Modal';
 import { ModalHeader,ModalBody,ModalFooter } from '../Modal';
 import { FaTimes } from 'react-icons/fa';
+import { fetchBookings } from '../../api/bookingApi';
+import { formatDate } from '../../utils/formatDate';
 const ReservationList = () => {
   const reservations = useSelector((state) => state.reservations);
   const dispatch = useDispatch();
   const handleDelete=(id)=>{
-    dispatch(deleteReservation(id))
+    // dispatch(deleteReservation(id))
+    const r = res.filter(res => res.id !== id)
+    setRes(r)
     setshowCancel(false)
   }
+  
+  const [res,setRes]=useState([])
   const [search,setSearch]=useState('')
   const [showPayd,setShoPayd]=useState(false)
   const [showCancel,setshowCancel]=useState(false)
   const [idDelete,setiDelete]=useState('')
   // Search
-  const filterRes=(reservations==[])?[]:reservations.filter(
+  const filterRes=(res==[])?[]:res.filter(
     r=>r.id.toLowerCase().includes(search.toLocaleLowerCase())||
-    r.spot.toLowerCase().includes(search.toLocaleLowerCase())||
+    r.spot.code.toLowerCase().includes(search.toLocaleLowerCase())||
     r.status.toLowerCase().includes(search.toLocaleLowerCase())||
     r.startTime.toLowerCase().includes(search.toLocaleLowerCase())||
     r.endTime.toLowerCase().includes(search.toLocaleLowerCase())
 )
+useEffect(()=>{
+  fetchBookings().then((r)=>{
+    console.log(r)
+    // setReservation(r)
+    setRes(r)
+  }).catch((e)=>{console.log(e)})
+},[])
   return (
     <>
       <div className=''>
@@ -43,7 +56,6 @@ const ReservationList = () => {
                 <table  className='w-full min-w-[800px] text-sm text-left'>
                     <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
                       <tr>
-                            <th className="px-4 py-3 font-medium">Booking ID</th>
                       
                             <th className="px-4 py-3 font-medium">Spot</th>
                             <th className="px-4 py-3 font-medium">Check-in</th>
@@ -55,20 +67,20 @@ const ReservationList = () => {
                     <tbody>
                         {filterRes.map((r=>(
                           <tr  key={r.id} class="bg-white border-b hover:bg-gray-50">
-                          <td className="px-4 py-3 font-medium text-gray-900">{r.id}</td>
 
-                          <td className="px-4 py-3">{r.spot}</td>
-                          <td className="px-4 py-3">{r.startTime}</td>
-                          <td className="px-4 py-3">{r.endTime}</td>
+                          <td className="px-4 py-3">{r.spot.code}</td>
+                          <td className="px-4 py-3">{formatDate(r.startTime)}</td>
+                          <td className="px-4 py-3">{formatDate(r.endTime)}</td>
                           <td className="px-4 py-3">
-                            {r.status.toLowerCase()==="payed"&&
-                              <span className="px-2 py-1 rounded bg-green-100 text-green-800">{r.status}</span> 
+                            {r.status.toLowerCase()==="pending"&&
+                              <span className="px-2 py-1 rounded bg-green-100 text-green-800">{r.status.toLowerCase()}</span> 
                             }
                             {r.status.toLowerCase()==="unpayed"&& 
                                 <span className="px-2 py-1 rounded bg-red-100 text-red-800">{r.status}</span>
                             } 
                              
                           </td>
+                          
                           <td className="px-4 py-3">
                             
                             <div className='flex items-center space-x-2'>
