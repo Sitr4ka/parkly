@@ -3,23 +3,11 @@ import { useState } from 'react';
 import ParkingLayout from '../../components/ParkingLayout';
 import ReservationForm from '../../components/ReservationForm';
 import Sidebar from '../../components/SideBar';
-<<<<<<< HEAD
 import Navbar from '../../components/Navbar';
 import fakeSpots from '../../../data/fakeSpots';
 
 const Reservation = () => {
   // 👉 État central pour stocker la réservation sélectionnée
-=======
-import ParkingLayout from '../../components/ParkingLayout'
-import ReservationForm from '../../components/ReservationForm'
-import fakeSpots from '../../../data/fakeSpots'
-import NewBooking from '../../components/forms/NewBooking';
-import Modal from '../../components/Modal';
-import { ModalHeader,ModalBody,ModalFooter } from '../../components/Modal';
-import { FaTimes } from 'react-icons/fa';
-import BookingInfo from '../../components/forms/BookingInfo';
-export default function Reservation() {
->>>>>>> 330384c (new booking with modals)
   const [selectedReservation, setSelectedReservation] = useState(null);
   const [show,setShow]=useState(false)
   return (
@@ -38,7 +26,7 @@ export default function Reservation() {
               {/* à modifier */}
               <div className="grid grid-cols-[2fr_1fr] gap-6 h-full">
                 {/* 🔽 onSelect va remonter les infos vers Reservation */}
-                <ParkingLayout spots={fakeSpots} onSelect={setSelectedReservation} />
+                <ParkingLayout spots={fakeSpots} onSelexct={setSelectedReservation} />
                 {/* 🔽 on passe les données vers ReservationForm */}
                 <ReservationForm selectedReservation={selectedReservation} />
               </div>
