@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import img from "../assets/img.svg";
 import { TiTick } from "react-icons/ti";
+import { spot1, spot2, spot3 } from "../data/spots";
 
-const BookingModal = ({ showModal, selectedParking, setSelectedParking }) => {
+function BookingModal({ showModal, selectedParking }) {
   const steps = ["schedule", "spot", "validation"];
+  const today = new Date().toLocaleDateString("fr-CA");
   const [currentStep, setCurrentStep] = useState(1);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [spotsList, setSpotsList] = useState(spot1);
   const [formData, setFormData] = useState({
-    bookingDate: "",
+    bookingDate: today,
     startTime: "",
     endTime: "",
     spot: "",
   });
-
   // Event Handler
   const handleBtnTrigger = (e) => {
     const isNext = e.target.innerHTML == "Next";
@@ -53,28 +55,40 @@ const BookingModal = ({ showModal, selectedParking, setSelectedParking }) => {
                 ))}
               </div>
 
+              {/* Stepper setup */}
               <div className="mx-6 mt-3">
                 {currentStep == 1 && (
-                  <Schedule formData={formData} setFormData={setFormData} />
+                  <Schedule
+                    formData={formData}
+                    setFormData={setFormData}
+                    today={today}
+                  />
                 )}
                 {currentStep == 2 && (
-                  <Spot formData={formData} setFormData={setFormData} />
+                  <Spot
+                    formData={formData}
+                    setFormData={setFormData}
+                    spotsList={spotsList}
+                    setSpotsList={setSpotsList}
+                    selectedParking={selectedParking}
+                  />
                 )}
                 {currentStep == 3 && (
                   <Validation formData={formData} setFormData={setFormData} />
                 )}
               </div>
 
+              {/* Stepper pagination toggle */}
               <div className="absolute bottom-8 step-trigger w-80 flex justify-between ps-6 pe-8">
                 <button
-                  onClick={handleBtnTrigger}
                   className="w-20 hover:bg-blue-400 hover:border-blue-700 hover:text-amber-100 cursor-pointer py-2 border border-gray-600 rounded-md text-gray-400"
+                  onClick={handleBtnTrigger}
                 >
                   Previous
                 </button>
                 <button
-                  onClick={handleBtnTrigger}
                   className="w-20 hover:bg-blue-400 hover:border-blue-700 hover:text-amber-100 cursor-pointer py-2 border border-gray-600 rounded-md text-gray-400"
+                  onClick={handleBtnTrigger}
                 >
                   Next
                 </button>
@@ -85,15 +99,13 @@ const BookingModal = ({ showModal, selectedParking, setSelectedParking }) => {
       )}
     </>
   );
-};
+}
 
 export default BookingModal;
 
-const Schedule = ({ formData, setFormData }) => {
+function Schedule({ formData, setFormData, today }) {
   const handleChange = (e) => {
-    setFormData(() => {
-      return { ...formData, [e.target.name]: e.target.value };
-    });
+    setFormData(() => ({ ...formData, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -107,10 +119,11 @@ const Schedule = ({ formData, setFormData }) => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md bg-blue-200"
             value={formData.bookingDate}
             onChange={handleChange}
+            min={today}
           />
         </div>
-        <div className="grid grid-cols-2 gap-3">
-          <div className="input-group mb-4">
+        <div className="grid grid-cols-2 gap-x-3">
+          <div className="input-group">
             <label className="block text-sm font-medium mb-1">Start Time</label>
             <input
               type="time"
@@ -120,7 +133,7 @@ const Schedule = ({ formData, setFormData }) => {
               onChange={handleChange}
             />
           </div>
-          <div className="input-group mb-4">
+          <div className="input-group">
             <label className="block text-sm font-medium mb-1">End Time</label>
             <input
               type="time"
@@ -130,34 +143,63 @@ const Schedule = ({ formData, setFormData }) => {
               onChange={handleChange}
             />
           </div>
+          {!true && (
+            <div className="form-error mt-1 col-span-2 text-red-700">
+              Please fill out the booking date{" "}
+            </div>
+          )}
         </div>
       </form>
     </>
   );
-};
+}
 
-function Spot({ formData, setFormData }) {
+function Spot({ formData, setFormData, spotsList, setSpotsList, selectedParking }) {
   const [selectedSpot, setSelectedSpot] = useState(null);
+  const parkingId = selectedParking.id;
+
+  switch (parkingId) {
+    case 2:
+      setSpotsList(spot2)
+      break;
+    case 3:
+      setSpotsList(spot3)
+    default:
+      break;
+  }
+  // Spot Selection System
   const toggleSelectedSpot = (e, spot) => {
     setSelectedSpot((prev) => {
       const newSpot = prev === spot ? null : spot;
 
       setFormData((formData) => ({
         ...formData,
-        spot: newSpot ? `A${newSpot}` : "",
+        spot: newSpot ? newSpot : "",
       }));
 
       return newSpot;
     });
-    // setSelectedSpot((prev) => (prev == spot ? null : spot));
-    // setFormData((formData) => ({...formData, "spot": selectedSpot ? "" : e.target.innerText}));
   };
 
   return (
     <>
       <div className="h-53 flex flex-col justify-between px-6 py-3 gap-2">
         <div className="grid grid-cols-4 gap-2 overflow-hidden">
-          {Array.from({ length: 14 }).map((_, index) => {
+          {spotsList?.map((spot, index) => (
+            <div
+              key={index + 1}
+              className={`text-center border cursor-pointer hover:bg-green-200} 
+                            ${
+                              spot == formData.spot
+                                ? "bg-green-900 text-white"
+                                : ""
+                            }`}
+              onClick={(e) => toggleSelectedSpot(e, spot)}
+            >
+              {spot}
+            </div>
+          ))}
+          {/* {Array.from({ length: 14 }).map((_, index) => {
             const spotIndex = index + 1;
 
             return (
@@ -174,7 +216,7 @@ function Spot({ formData, setFormData }) {
                 {`A${spotIndex}`}
               </div>
             );
-          })}
+          })} */}
         </div>
 
         <div className="h-10 flex justify-between items-center py-6">
