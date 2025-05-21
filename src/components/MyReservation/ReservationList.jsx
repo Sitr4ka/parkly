@@ -7,6 +7,12 @@ import { FaTimes } from 'react-icons/fa';
 import { fetchBookings } from '../../api/bookingApi';
 import { formatDate } from '../../utils/formatDate';
 const ReservationList = () => {
+   const [res,setRes]=useState([])
+  const [search,setSearch]=useState('')
+  const [showPayd,setShoPayd]=useState(false)
+  const [showCancel,setshowCancel]=useState(false)
+  const [idDelete,setiDelete]=useState('')
+  
   const reservations = useSelector((state) => state.reservations);
   const dispatch = useDispatch();
   const handleDelete=(id)=>{
@@ -15,25 +21,30 @@ const ReservationList = () => {
     setRes(r)
     setshowCancel(false)
   }
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const rowsPerPage =5;
+    const indexOfLastRow = currentPage * rowsPerPage;
+    const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+    
+     const filterRes=(res==[])?[]:res.filter(
+            r=>r.id.toLowerCase().includes(search.toLocaleLowerCase())||
+            r.spot.code.toLowerCase().includes(search.toLocaleLowerCase())||
+            r.status.toLowerCase().includes(search.toLocaleLowerCase())||
+            r.startTime.toLowerCase().includes(search.toLocaleLowerCase())||
+            r.endTime.toLowerCase().includes(search.toLocaleLowerCase()))
+    
+    const currentRows=filterRes.slice(indexOfFirstRow, indexOfLastRow)
+    const totalPages = Math.ceil(filterRes.length / rowsPerPage);
   
-  const [res,setRes]=useState([])
-  const [search,setSearch]=useState('')
-  const [showPayd,setShoPayd]=useState(false)
-  const [showCancel,setshowCancel]=useState(false)
-  const [idDelete,setiDelete]=useState('')
-  // Search
-  const filterRes=(res==[])?[]:res.filter(
-    r=>r.id.toLowerCase().includes(search.toLocaleLowerCase())||
-    r.spot.code.toLowerCase().includes(search.toLocaleLowerCase())||
-    r.status.toLowerCase().includes(search.toLocaleLowerCase())||
-    r.startTime.toLowerCase().includes(search.toLocaleLowerCase())||
-    r.endTime.toLowerCase().includes(search.toLocaleLowerCase())
-)
+  
+  const handlePosition=(i)=>{
+      setCurrentPage(i)
+  }
 useEffect(()=>{
-  fetchBookings().then((r)=>{
-    console.log(r)
-    // setReservation(r)
-    setRes(r)
+    fetchBookings().then((r)=>{
+      console.log(r)
+      setRes(r)
   }).catch((e)=>{console.log(e)})
 },[])
   return (
@@ -43,12 +54,12 @@ useEffect(()=>{
             <h2 className="text-lg font-semibold text-gray-800">Recent Reservations</h2>
         </div>
           <header className="flex gap-2 mb-8">
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder=" Search for a  reservation"
-          className="border border-gray-300 p-2 rounded w-full"
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder=" Search for a  reservation"
+            className="border border-gray-300 p-2 rounded w-full"
         />
         <button className="bg-blue-600 text-white px-4 py-2 rounded">Rechercher</button>
       </header>
@@ -65,7 +76,7 @@ useEffect(()=>{
                         </tr>
                     </thead>
                     <tbody>
-                        {filterRes.map((r=>(
+                        {currentRows.map((r=>(
                           <tr  key={r.id} class="bg-white border-b hover:bg-gray-50">
 
                           <td className="px-4 py-3">{r.spot.code}</td>
@@ -105,6 +116,28 @@ useEffect(()=>{
                         )))}
                     </tbody>
                 </table>
+
+            </div>
+             <div className="flex justify-between items-center mt-4">
+                <div className="text-sm text-gray-600">Showing {currentRows.length} of {filterRes.length} reservations</div>
+                <div className="flex items-center space-x-2">
+                    <button className="w-8 h-8 flex items-center justify-center rounded border border-gray-200 text-gray-500 disabled:opacity-50" disabled>
+                        <i className="ri-arrow-left-s-line"></i>
+                    </button>
+                    {[...Array(totalPages)].map(((_,index)=>(
+                      <button className={`
+                          w-8 h-8 flex items-center justify-center rounded 
+                           border-gray-200 text-gray-700 
+                             ${(index+1==currentPage)? 'bg-primary text-white':''}
+                           `}
+                        onClick={()=>handlePosition(index+1)}
+                      >{index+1}</button>
+                    )))}
+                   
+                    <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-200 text-gray-700 hover:bg-gray-50">
+                        <i class="ri-arrow-right-s-line"></i>
+                    </button>
+                </div>
             </div>
             <Modal show={showPayd}>
               <ModalHeader>
