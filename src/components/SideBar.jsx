@@ -23,6 +23,7 @@ export default function Sidebar() {
         >
           <HiMenu size={24} />
         </button>
+        
       </div>
     );
   }
@@ -75,6 +76,13 @@ export default function Sidebar() {
               >
                 <span className="text-sm">Payed</span>
               </NavLink>
+                  <NavLink
+            className={({ isActive }) =>
+            g
+            to="/myReservation"
+          >
+            Tout mes réservations
+          </NavLink>
             </div>
           )}
         </div>
