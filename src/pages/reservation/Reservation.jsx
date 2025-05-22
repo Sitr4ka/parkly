@@ -7,7 +7,7 @@ import fakeSpots from '../../../data/fakeSpots'
 
 export default function Reservation() {
   const [selectedReservation, setSelectedReservation] = useState(null);
-
+  const [show,setShow]=useState(false)
   return (
     <div className="h-screen flex flex-col">
 
