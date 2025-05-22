@@ -76,12 +76,13 @@ export default function Sidebar() {
               >
                 <span className="text-sm">Payed</span>
               </NavLink>
-                  <NavLink
+                        <NavLink
             className={({ isActive }) =>
-            g
+              isActive ? 'text-blue-700 bg-blue-300 rounded px-4 py-2' : 'rounded px-4 py-2'
+            }
             to="/myReservation"
           >
-            Tout mes réservations
+            All  Bookings
           </NavLink>
             </div>
           )}
