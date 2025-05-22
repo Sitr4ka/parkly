@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { FiBell, FiUser, FiSettings, FiLogOut, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import logo from './../assets/logo2.png'
-
+import { Link, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const navigate=useNavigate()
   const toggleMenu = () => setMenuOpen(open => !open);
+  const logout=()=>{
 
+     localStorage.removeItem("token")
+     navigate('/home')
+  }
   return (
     <nav className="w-full flex items-center justify-between bg-white shadow h-16 px-2 sm:px-4">
   <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
@@ -43,7 +48,7 @@ export default function Navbar() {
           </li>
           <li>
             <button
-              onClick={() => {}}
+              onClick={() => {logout()}}
               className="w-full cursor-pointer text-left px-4 py-2 flex items-center space-x-2 hover:bg-gray-100 transition-colors"
             >
               <FiLogOut size={18} />

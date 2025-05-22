@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './../assets/logo2.png';
 import { useNavigate } from 'react-router-dom';
+
 const Header = () => {
   const navigate=useNavigate()
   return (
@@ -9,16 +10,16 @@ const Header = () => {
         <div className="container h-[80px] mx-auto px-8 flex items-center justify-between">
           <img src={logo} alt="Logo" className="h-20 w-60 object-contain" />
           <nav className="nav-menu flex gap-8">
-            <a href="#" className="navItem text-primary">
+            <a href="/home" className="navItem text-primary">
               Home
             </a>
-            <a href="#" className="navItem">
+            <a href="#about" className="navItem">
               About
             </a>
-            <a href="#" className="navItem">
+            <a href="#products" className="navItem">
               Services
             </a>
-            <a href="#" className="navItem">
+            <a href="#contact" className="navItem">
               Contact
             </a>
           </nav>

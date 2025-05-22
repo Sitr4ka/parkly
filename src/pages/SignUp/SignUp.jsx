@@ -3,7 +3,8 @@ import { register } from '../../api/authApi';
 import logo from '../../assets/logo2.png';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-
+import Header from '../../components/Header';
+import { Link } from 'react-router-dom';
 export default function SignUp() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -39,11 +40,13 @@ export default function SignUp() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 sm:px-6">
-      <div className="w-full max-w-md sm:max-w-lg bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-md space-y-6">
+    <>
+      <Header/>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 ">
+      <div className="w-full max-w-md sm:max-w-lg bg-white">
         <div className="text-center space-y-2">
           <img src={logo} alt="Logo" className="h-16 w-auto sm:h-20 mx-auto object-contain" />
-          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl sm:text-3xl font-semibold  ">
             Create your account
           </h1>
         </div>
@@ -52,7 +55,7 @@ export default function SignUp() {
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="block text-sm font-medium text-gray-700 "
             >
               Name
             </label>
@@ -63,8 +66,8 @@ export default function SignUp() {
               value={form.name}
               onChange={handleChange}
               className={`mt-1 p-2 pl-4 w-full rounded-md border ${
-                errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-              } dark:bg-gray-700 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500 outline-none`}
+                errors.name ? 'border-red-500' : 'border-gray-300 '
+              }  focus:ring-blue-500 focus:border-blue-500 outline-none`}
               placeholder="John Doe"
             />
             {errors.name && <p className="text-sm text-red-600 mt-1">{errors.name}</p>}
@@ -73,7 +76,7 @@ export default function SignUp() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="block text-sm font-medium text-gray-700 "
             >
               Email
             </label>
@@ -85,8 +88,8 @@ export default function SignUp() {
               onChange={handleChange}
               autoComplete="email"
               className={`mt-1 p-2 pl-4 w-full rounded-md border ${
-                errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-              } dark:bg-gray-700 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500 outline-none`}
+                errors.email ? 'border-red-500' : 'border-gray-300'
+              }   focus:ring-blue-500 focus:border-blue-500 outline-none`}
               placeholder="you@example.com"
             />
             {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
@@ -95,7 +98,7 @@ export default function SignUp() {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="block text-sm font-medium text-gray-700 "
             >
               Password
             </label>
@@ -108,8 +111,8 @@ export default function SignUp() {
                 onChange={handleChange}
                 autoComplete="new-password"
                 className={`mt-1 p-2 pl-4 pr-10 w-full rounded-md border ${
-                  errors.password ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                } dark:bg-gray-700 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500 outline-none`}
+                  errors.password ? 'border-red-500' : 'border-gray-300 '
+                }  focus:ring-blue-500 focus:border-blue-500 outline-none`}
                 placeholder="••••••"
               />
               <button
@@ -133,13 +136,15 @@ export default function SignUp() {
           </button>
         </form>
 
-        <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-center text-sm text-gray-500 ">
           Already have an account?{' '}
-          <a href="/signin" className="text-blue-600 hover:underline">
+          <Link to="/signin" className="text-blue-600 hover:underline">
             Sign in
-          </a>
+          </Link>
         </p>
       </div>
     </div>
+    </>
+    
   );
 }

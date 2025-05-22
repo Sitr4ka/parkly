@@ -3,7 +3,8 @@ import { login } from '../../api/authApi';
 import logo from '../../assets/logo2.png';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-
+import Header from '../../components/Header';
+import { Link } from 'react-router-dom';
 export default function SignIn() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -31,18 +32,21 @@ export default function SignIn() {
     try {
       const data = await login(form);
       localStorage.setItem('token', data.token);
-      navigate('/reservation');
+      navigate('/booking');
     } catch (err) {
       setApiError(err.message);
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center p-4 bg-gray-50 dark:bg-gray-900">
-      <div className="w-full max-w-[90%] sm:max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md space-y-6">
+      <>
+      <Header/>
+      <div className="min-h-screen flex flex-col justify-center p-4 bg-gray-50">
+      
+      <div className="w-full max-w-[90%] sm:max-w-md mx-auto bg-white  p-6 rounded-2xl shadow-md space-y-6">
         <div className="text-center">
           <img src={logo} alt="Logo" className="h-16 sm:h-20 w-auto object-contain mx-auto" />
-          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900">
             Sign in
           </h1>
         </div>
@@ -51,7 +55,7 @@ export default function SignIn() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="block text-sm font-medium text-gray-700 "
             >
               Email
             </label>
@@ -63,8 +67,8 @@ export default function SignIn() {
               onChange={handleChange}
               autoComplete="email"
               className={`mt-1 p-2 pl-4 w-full rounded-md shadow-sm border ${
-                errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-              } dark:bg-gray-700 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500 outline-none`}
+                errors.email ? 'border-red-500' : 'border-gray-300 '
+              }  focus:ring-blue-500 focus:border-blue-500 outline-none`}
               placeholder="you@example.com"
             />
             {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
@@ -73,7 +77,7 @@ export default function SignIn() {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="block text-sm font-medium text-gray-700 "
             >
               Password
             </label>
@@ -87,7 +91,7 @@ export default function SignIn() {
                 autoComplete="current-password"
                 className={`mt-1 p-2 pl-4 pr-10 w-full rounded-md shadow-sm border ${
                   errors.password ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                } dark:bg-gray-700 dark:text-gray-100 focus:ring-blue-500 focus:border-blue-500 outline-none`}
+                } focus:ring-blue-500 focus:border-blue-500 outline-none`}
                 placeholder="••••••"
               />
               <button
@@ -112,13 +116,15 @@ export default function SignIn() {
           </button>
         </form>
 
-        <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-center text-sm text-gray-500 ">
           Don’t have an account?{' '}
-          <a href="/signup" className="text-blue-600 hover:underline">
+          <Link to="/signup" className="text-blue-600 hover:underline">
             Sign up
-          </a>
+          </Link>
         </p>
       </div>
-    </div>
+      </div>
+      </>
+ 
   );
 }
